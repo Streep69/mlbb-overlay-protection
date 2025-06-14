@@ -1,3 +1,5 @@
 #!/usr/bin/env python3
-# heartbeat: fully validated Python module — implement logic here
-print("Running heartbeat")
+import time, requests
+while True:
+    print("[heartbeat] alive")
+    time.sleep(15)
