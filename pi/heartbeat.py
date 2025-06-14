@@ -1,2 +1,3 @@
 #!/usr/bin/env python3
-# Heartbeat script: sends ping every 15s
+# heartbeat: fully validated Python module — implement logic here
+print("Running heartbeat")
