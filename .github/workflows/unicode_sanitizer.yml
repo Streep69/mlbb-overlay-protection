@@ -12,8 +12,7 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
       - name: Run sanitizers
         run: |
           python ci/remove_cjk.py $(git ls-files '*.py' '*.yml' '*.md') || true
