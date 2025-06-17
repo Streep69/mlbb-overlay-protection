@@ -10,10 +10,13 @@ jobs:
         with:
           persist-credentials: false
           token: ${{ secrets.GH_PAT }}
-      - name: Sync with main
+      - name: Check branch sync with main
         run: |
           git fetch origin main
-          git merge origin/main --no-edit || true
+          git merge --no-commit origin/main || {
+            echo '❌ Branch is stale; please merge/rebase main manually and resolve conflicts.'
+            exit 1
+          }
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
