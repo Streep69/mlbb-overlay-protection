@@ -22,7 +22,9 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          sudo apt update && sudo apt install -y adb ffmpeg libusb-1.0-0-dev
+          pip install -r requirements.txt
       - name: Run sanitizers and tests
         run: |
           find . -name '*.py' -exec python3 ci/remove_cjk.py {} +

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
-cd ~/mlbb-overlay-protection || { echo '❌ Repo not found'; exit 1; }
-BRANCH='0mjgdv-codex/add-agents.md-to-mlbb-cheat-project'
+cd ~/mlbb-overlay-protection || exit 1
+BRANCH='0ipigq-codex/add-agents.md-to-mlbb-cheat-project'
 
 git fetch origin
 
@@ -14,4 +14,4 @@ git rebase origin/main --allow-unrelated-histories -X theirs
 
 git push origin "$BRANCH" --force-with-lease
 
-echo '✅ Rebase with unrelated histories complete and pushed.'
+echo '✅ Auto rebase with unrelated histories applied and pushed'

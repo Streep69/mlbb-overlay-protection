@@ -26,6 +26,8 @@ jobs:
           labels: rebase
       - name: Run sanitizers and tests
         run: |
+          sudo apt update && sudo apt install -y adb ffmpeg libusb-1.0-0-dev
+          pip install -r requirements.txt
           find . -name '*.py' -exec python3 ci/remove_cjk.py {} +
           find . -name '*.py' -exec python3 ci/remove_bidi.py {} +
           pytest --maxfail=1 --disable-warnings -q

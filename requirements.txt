@@ -1,4 +1,10 @@
-numpy
+opencv-python-headless
 scikit-learn
+numpy
+pandas
+pyshark
+pure-python-adb
 aiohttp
+pyyaml
+tkinter; sys_platform == 'linux'
 pytest

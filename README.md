@@ -3,9 +3,10 @@
 This project provides a non-root overlay cheat framework for Mobile Legends: Bang Bang streamed from an S23 Ultra to a Raspberry Pi.
 
 ## Installation
-Install the required Python packages using the `requirements.txt` file:
+Install system and Python dependencies then install packages from `requirements.txt`:
 
 ```bash
+sudo apt update && sudo apt install -y adb ffmpeg libusb-1.0-0-dev
 pip install -r requirements.txt
 ```
 
@@ -43,7 +44,7 @@ The GitHub Actions workflow requires a Personal Access Token (PAT) stored as `GH
 * Remember to update `full_chat_log.md` whenever changes are made.
 
 ## Auto Rebase
-Run the automated rebase script in Termux when histories diverge:
+Run the automated rebase script when histories diverge:
 
 ```bash
 ./auto_rebase_allow.sh

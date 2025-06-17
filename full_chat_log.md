@@ -5,3 +5,4 @@ CI workflow updated to use GH_PAT and sanitize before tests.
 Added conflict resolution step and updated CI documentation.
 Added auto_rebase workflow with '/rebase' comment and automerge label.
 Added auto-rebase script and workflow to handle unrelated histories with -X theirs.
+Updated requirements and CI to install system packages, added auto_rebase_allow.sh instructions.

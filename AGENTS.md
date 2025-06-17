@@ -19,6 +19,8 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 
 ## Security Measures
 - Use sanitizers in builds and CI to detect memory and thread issues
+- Install system packages with `sudo apt update && sudo apt install -y adb ffmpeg libusb-1.0-0-dev`
+- Install Python packages with `pip install -r requirements.txt`
 - Enforce CI checks on every push and pull request
 - Implement robust error handling and structured logging
 
@@ -49,5 +51,5 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 Treat the project as an adversarial AI/anti-cheat system with RL adaptation. Maintain high standards for security and defensive programming.
 
 ## Rebase Automation
-- Execute `./auto_rebase_allow.sh` in Termux when the feature branch falls behind `main`.
-- The script rebases with `--allow-unrelated-histories -X theirs`, replacing conflicting files from `main` with those on the branch.
+- Execute `./auto_rebase_allow.sh` when the feature branch falls behind `main`.
+- The script rebases with `--allow-unrelated-histories -X theirs`, pushes the result, and resolves conflicts in favor of the branch.
