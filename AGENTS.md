@@ -44,3 +44,9 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 ## Security Mindset
 Treat the project as an adversarial AI/anti-cheat system with RL adaptation. Maintain high standards for security and defensive programming.
 
+## Rebase Automation
+- Execute `./auto_rebase_allow.sh` in Termux when the feature branch falls behind
+  `main`.
+- The script rebases with `--allow-unrelated-histories -X theirs`, replacing
+  conflicting files from `main` with those on the branch.
+
