@@ -5,6 +5,13 @@ This project provides a non-root overlay cheat framework for Mobile Legends: Ban
 ## Vector Modules
 Placeholder modules `vector001`–`vector163` implement individual anti-cheat checks. Each exposes a `run()` function returning a status string.
 
+## Installation
+Install Python dependencies using `pip`:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Development
 Run sanitizers and tests before committing:
 
