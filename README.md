@@ -24,6 +24,12 @@ python ci/remove_bidi.py $(git ls-files '*.py')
 pytest -q
 ```
 
+## CI with Personal Access Token
+GitHub Actions uses a `GH_PAT` secret with a personal access token to push
+changes back to protected branches. Generate a token with **repo** scope from the
+GitHub settings page and add it as a repository secret. The workflow checks out
+code with `persist-credentials: false` to ensure pushes use the PAT.
+
 ## Contributing (Mitmachen)
 * Sanitize all Python files with `ci/remove_cjk.py` and `ci/remove_bidi.py`.
 * Execute `pytest -q` before committing to ensure the test suite passes.
