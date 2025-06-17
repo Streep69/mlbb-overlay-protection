@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install dependencies
-        run: pip install pytest
+        run: pip install -r requirements.txt
       - name: Run sanitizers and tests
         run: |
           find . -name '*.py' -exec python3 ci/remove_cjk.py {} +

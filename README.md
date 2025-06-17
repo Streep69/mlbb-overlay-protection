@@ -1,6 +1,6 @@
 # mlbb-overlay-protection
 
-This project delivers a lightweight anti-cheat framework for Mobile Legends: Bang Bang. It runs without root on an S23 Ultra and streams telemetry to a Raspberry Pi for analysis.
+This project provides a non-root overlay cheat framework for Mobile Legends: Bang Bang streamed from an S23 Ultra to a Raspberry Pi.
 
 ## Installation
 Install the required Python packages using the `requirements.txt` file:
@@ -36,7 +36,7 @@ pytest -q
 ## Continuous Integration
 The GitHub Actions workflow requires a Personal Access Token (PAT) stored as `GH_PAT` in the repository secrets. Generate a token with **repo** scope and add it via *Settings → Secrets → Actions*. The workflow checks out with `persist-credentials: false` and uses this PAT to push changes back to protected branches.
 
-## Contributing
+## Contributing (Mitmachen)
 * Sanitize all Python files with `ci/remove_cjk.py` and `ci/remove_bidi.py`.
 * Execute `pytest -q` before committing to ensure the test suite passes.
 * Commit only clean code and follow concise commit messages.
