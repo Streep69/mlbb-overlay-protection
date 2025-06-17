@@ -3,3 +3,4 @@ Updated vector149 and vector150 with functional implementations. Added sandbox a
 Fixed vector149 to handle missing aiohttp and tkinter dependencies.
 CI workflow updated to use GH_PAT and sanitize before tests.
 Added conflict resolution step and updated CI documentation.
+Added auto_rebase workflow with '/rebase' comment and automerge label.
