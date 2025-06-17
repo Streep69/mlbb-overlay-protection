@@ -27,9 +27,8 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 
 ## CI Expectations
 - Sanitize and run tests on every push and pull request
-- Workflows use a Personal Access Token (`GH_PAT`) with `repo` scope.
-- Checkout is performed with `persist-credentials: false` and pushes back with this PAT.
-- Pull requests labeled `automerge` will merge automatically when CI succeeds.
+- Workflows use a Personal Access Token (`GH_PAT`) with `repo` scope. Checkout uses `persist-credentials: false` and the PAT to push sanitized, tested code back to the protected branch.
+- Pull requests labeled `automerge` merge automatically when CI succeeds.
 - Before pushing, the workflow fetches `main` and merges it into the feature branch to auto-resolve simple conflicts.
 
 ## Documentation Updates

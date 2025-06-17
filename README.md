@@ -35,9 +35,7 @@ pytest -q
 
 ## Continuous Integration
 The GitHub Actions workflow requires a Personal Access Token (PAT) stored as `GH_PAT` in the repository secrets. Generate a token with **repo** scope and add it via *Settings → Secrets → Actions*. The workflow checks out with `persist-credentials: false` and uses this PAT to push changes back to protected branches.
-The workflow labels pull requests with `automerge` and automatically merges them when CI passes.
-Before running tests, the workflow fetches updates from `main` and merges them into the feature branch to resolve simple conflicts.
-If manual conflicts remain, rebase the feature branch onto `main` and re-run the workflow.
+The workflow labels pull requests with `automerge` and automatically merges them when CI passes. After sanitization and tests succeed, the workflow pushes the cleaned code back to the protected branch using the PAT. It also fetches updates from `main` and merges them into the feature branch to resolve simple conflicts automatically. If manual conflicts remain, rebase the feature branch onto `main` and re-run the workflow.
 
 ## Contributing (Mitmachen)
 * Sanitize all Python files with `ci/remove_cjk.py` and `ci/remove_bidi.py`.
