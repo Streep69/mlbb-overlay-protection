@@ -27,6 +27,9 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 
 ## CI Expectations
 - Sanitize and run tests on every push and pull request
+- Workflows use a Personal Access Token (`GH_PAT`) with `repo` scope.
+- Checkout is performed with `persist-credentials: false` and pushes back with this PAT.
+- Pull requests labeled `automerge` will merge automatically when CI succeeds.
 
 ## Documentation Updates
 - Whenever code changes require docs, update `README.md` and `full_chat_log.md`
@@ -35,7 +38,7 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 1. Sanitize changes
 2. Run tests
 3. Commit clean code with concise messages
-4. CI must pass before merge
+4. CI must pass before merge; label pull requests `automerge` to trigger automatic merging
 
 ## Coding Conventions
 - Follow PEP8 style with type hints

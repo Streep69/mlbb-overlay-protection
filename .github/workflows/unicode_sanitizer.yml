@@ -21,8 +21,15 @@ jobs:
           find . -name '*.py' -exec python3 ci/remove_cjk.py {} +
           find . -name '*.py' -exec python3 ci/remove_bidi.py {} +
           pytest --maxfail=1 --disable-warnings -q
-      - name: Push changes to protected branch
+      - name: Push sanitized/tested code
         uses: ad-m/github-push-action@v0.8.0
         with:
           github_token: ${{ secrets.GH_PAT }}
           branch: ${{ github.head_ref }}
+      - name: Auto-merge PR after CI
+        uses: pascalgn/automerge-action@v0.16.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          merge-method: merge
+          merge-labels: automerge
