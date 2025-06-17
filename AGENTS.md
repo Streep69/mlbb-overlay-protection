@@ -30,6 +30,7 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 - Workflows use a Personal Access Token (`GH_PAT`) with `repo` scope.
 - Checkout is performed with `persist-credentials: false` and pushes back with this PAT.
 - Pull requests labeled `automerge` will merge automatically when CI succeeds.
+- Before pushing, the workflow fetches `main` and merges it into the feature branch to auto-resolve simple conflicts.
 
 ## Documentation Updates
 - Whenever code changes require docs, update `README.md` and `full_chat_log.md`
