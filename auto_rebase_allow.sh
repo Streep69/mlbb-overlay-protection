@@ -10,7 +10,7 @@ git checkout "$BRANCH"
 git merge --abort 2>/dev/null || true
 git rebase --abort 2>/dev/null || true
 
-git rebase origin/main --allow-unrelated-histories -X theirs
+git merge --no-edit --allow-unrelated-histories -X theirs origin/main
 
 git push origin "$BRANCH" --force-with-lease
 

@@ -6,5 +6,4 @@ pyshark
 pure-python-adb
 aiohttp
 pyyaml
-tkinter; sys_platform == 'linux'
 pytest
