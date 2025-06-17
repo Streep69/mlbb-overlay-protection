@@ -2,6 +2,13 @@
 
 This project provides a non-root overlay cheat framework for Mobile Legends: Bang Bang streamed from an S23 Ultra to a Raspberry Pi.
 
+## Installation
+Install the required Python packages using the `requirements.txt` file:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Vector Modules
 Placeholder modules `vector001`–`vector163` implement individual anti-cheat checks. Each exposes a `run()` function returning a status string.
 
