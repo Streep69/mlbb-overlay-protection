@@ -1,0 +1,23 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install pytest
+      - name: Run sanitizers
+        run: |
+          python ci/remove_cjk.py $(git ls-files '*.py') || {
+            echo 'CJK characters removed. Please review.'; exit 1; }
+          python ci/remove_bidi.py $(git ls-files '*.py') || {
+            echo 'BIDI characters removed. Please review.'; exit 1; }
+      - name: Run tests
+        run: pytest -q
