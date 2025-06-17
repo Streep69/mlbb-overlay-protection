@@ -5,6 +5,11 @@ This project provides a non-root overlay cheat framework for Mobile Legends: Ban
 ## Vector Modules
 Placeholder modules `vector001`–`vector163` implement individual anti-cheat checks. Each exposes a `run()` function returning a status string.
 
+## Overlay App
+The `overlay-app/` directory contains placeholder modules for an Android
+application that renders overlay elements on top of the game. These files will
+eventually be replaced with full Kotlin/Java implementations.
+
 ## Development
 Run sanitizers and tests before committing:
 
