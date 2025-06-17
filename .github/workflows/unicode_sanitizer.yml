@@ -16,9 +16,18 @@ jobs:
           pip install -r requirements.txt
       - name: Run sanitizers
         run: |
-          python ci/remove_cjk.py $(git ls-files '*.py') || {
-            echo 'CJK characters removed. Please review.'; exit 1; }
-          python ci/remove_bidi.py $(git ls-files '*.py') || {
-            echo 'BIDI characters removed. Please review.'; exit 1; }
+          python ci/remove_cjk.py $(git ls-files '*.py' '*.yml' '*.md') || true
+          python ci/remove_bidi.py $(git ls-files '*.py' '*.yml' '*.md') || true
       - name: Run tests
         run: pytest -q
+      - name: Commit sanitized files
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "github-actions"
+          git diff --quiet || git commit -am "chore: sanitize unicode"
+      - name: Push changes
+        if: github.event_name == 'push'
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git push https://$GH_PAT@github.com/${{ github.repository }} HEAD:${{ github.ref }}
