@@ -36,3 +36,14 @@ pytest -q
 * Execute `pytest -q` before committing to ensure the test suite passes.
 * Commit only clean code and follow concise commit messages.
 * Remember to update `full_chat_log.md` whenever changes are made.
+
+## Auto Rebase
+Run the automated rebase script in Termux when histories diverge:
+
+```bash
+./auto_rebase_allow.sh
+```
+
+The script executes `git rebase origin/main --allow-unrelated-histories -X theirs`.
+Conflicts are resolved in favor of the feature branch, overwriting files from
+`main` if necessary.
