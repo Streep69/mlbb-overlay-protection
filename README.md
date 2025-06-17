@@ -1,9 +1,12 @@
 # mlbb-overlay-protection
 
-This project provides a non-root overlay cheat framework for Mobile Legends: Bang Bang streamed from an S23 Ultra to a Raspberry Pi.
+This project delivers a lightweight anti-cheat framework for Mobile Legends: Bang Bang. It runs without root on an S23 Ultra and streams telemetry to a Raspberry Pi for analysis.
 
 ## Vector Modules
-Placeholder modules `vector001`–`vector163` implement individual anti-cheat checks. Each exposes a `run()` function returning a status string.
+Modules `vector001`–`vector163` implement individual detection vectors. Each exposes a `run()` function returning a status string. Example advanced modules include:
+
+- `vector149` – Tkinter security dashboard with a REST endpoint.
+- `vector150` – IsolationForest anomaly detector using sandbox session data.
 
 ## Development
 Run sanitizers and tests before committing:
