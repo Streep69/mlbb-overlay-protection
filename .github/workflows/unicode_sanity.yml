@@ -1,0 +1,19 @@
+name: unicode_sanity_checks
+on: [pull_request]
+
+jobs:
+  scan_unicode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Detect non-ASCII characters
+        run: |
+          if git diff origin/main...HEAD | grep -P '[^\x00-\x7F]'; then
+            echo '::warning title=Unicode Warning::Non-ASCII characters found (including CJK/homoglyphs)'
+          fi
+      - name: Detect Trojan-Source control chars
+        run: |
+          if git diff origin/main...HEAD | grep -P '[\u202A-\u202E\u2066-\u2069]'; then
+            echo '::error title=Trojan Source::Bidirectional unicode attack characters found!'
+            exit 1
+          fi

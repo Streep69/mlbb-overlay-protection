@@ -1,0 +1,9 @@
+opencv-python-headless
+scikit-learn
+numpy
+pandas
+pyshark
+pure-python-adb
+aiohttp
+pyyaml
+pytest
