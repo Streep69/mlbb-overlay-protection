@@ -52,3 +52,22 @@ an argument or set `BRANCH` to override the default of the current branch. If
 The script executes `git rebase origin/main --allow-unrelated-histories -X theirs`.
 Conflicts are resolved in favor of the feature branch, overwriting files from
 `main` if necessary.
+
+## Continuous Integration
+> ⚠ We enforce ASCII-only content. CI blocks hidden or malicious Unicode. Workflows require a Personal Access Token stored as `GH_PAT` in repository secrets. Generate a token with **repo** scope and add it via *Settings → Secrets → Actions*. Checkouts use `persist-credentials: false` and this PAT to push back to protected branches. Pull requests labeled `automerge` merge automatically when CI passes. Before pushing, the workflow checks if the branch is synced with `main`; if conflicts occur, it fails and instructs you to update.
+
+- Use `./gh_auth_login.sh` to install GitHub CLI, authenticate with `GH_PAT`, and confirm with `gh auth status`.
+- After authenticating, update the git remote:
+
+```bash
+git remote set-url origin https://x-access-token:${GH_PAT}@github.com/Streep69/mlbb-overlay-protection.git
+```
+
+## Auto Resolve Conflicts
+If merging `main` results in conflicts you want to resolve quickly, run the auto-resolve script:
+
+```bash
+./auto_resolve_conflicts.sh
+```
+
+It merges `main` with `-X theirs`, renames conflicted files with a `2` suffix, and pushes the result using `GH_PAT`.
