@@ -1,4 +1,9 @@
-numpy
-scikit-learn
 aiohttp
+numpy
+opencv-python-headless
+pandas
+pure-python-adb
+pyshark
+pyyaml
+scikit-learn
 pytest
