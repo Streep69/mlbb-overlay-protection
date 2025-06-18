@@ -14,7 +14,8 @@ git checkout "$BRANCH"
 git merge --abort 2>/dev/null || true
 git rebase --abort 2>/dev/null || true
 
-git rebase origin/main --allow-unrelated-histories -X theirs
+# Rebase onto main, allowing unrelated histories and favoring current branch
+git pull --rebase origin main --allow-unrelated-histories -X theirs
 
 REMOTE_URL=$(git config --get remote.origin.url 2>/dev/null || echo "")
 if [ -n "$GH_PAT" ] && [[ $REMOTE_URL == https://* ]]; then
