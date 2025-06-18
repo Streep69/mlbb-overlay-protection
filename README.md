@@ -62,6 +62,15 @@ Conflicts are resolved in favor of the feature branch, overwriting files from
 ```bash
 git remote set-url origin https://x-access-token:${GH_PAT}@github.com/Streep69/mlbb-overlay-protection.git
 ```
+## GitHub CLI Authentication
+To authenticate manually with the GitHub CLI, run:
+
+```bash
+echo "$GH_PAT" | gh auth login --with-token
+gh auth setup-git
+gh auth status
+```
+
 
 ## Auto Resolve Conflicts
 If merging `main` results in conflicts you want to resolve quickly, run the auto-resolve script:
