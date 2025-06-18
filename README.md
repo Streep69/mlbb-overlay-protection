@@ -52,3 +52,14 @@ Run the automated rebase script when histories diverge:
 ```
 
 The script executes `git rebase origin/main --allow-unrelated-histories -X theirs`. Conflicts are resolved in favor of the feature branch, overwriting files from `main` if necessary.
+
+## Auto Resolve Conflicts
+If a merge with `main` results in conflicts you do not wish to resolve manually,
+run the auto-resolve script:
+
+```bash
+./auto_resolve_conflicts.sh
+```
+
+It merges `main` using `-X theirs`, renames conflicted files with a `2` suffix,
+and pushes the result using `GH_PAT`.
