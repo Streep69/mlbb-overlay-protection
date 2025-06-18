@@ -37,6 +37,7 @@ pytest -q
 ## Continuous Integration
 > ⚠ We enforce ASCII-only content. CI will block hidden or malicious Unicode. The GitHub Actions workflow requires a Personal Access Token (PAT) stored as `GH_PAT` in the repository secrets. Generate a token with **repo** scope and add it via *Settings → Secrets → Actions*. The workflow checks out with `persist-credentials: false` and uses this PAT to push changes back to protected branches. The workflow labels pull requests with `automerge` and automatically merges them when CI passes. After sanitization and tests succeed, the workflow pushes the cleaned code back to the protected branch using the PAT. Before pushing, it checks whether the branch is synced with `main`; if not, the job fails with instructions to merge or rebase `main` manually. To update a pull request automatically, comment `/rebase` or add the `rebase` label. The *auto_rebase* workflow rebases the branch onto `main` using `cirrus-actions/rebase` and then removes the label.
 - Use `./gh_auth_login.sh` to install GitHub CLI if needed, authenticate with `GH_PAT`, setup git, and show `gh auth status`.
+- Run `./codex_cli_setup.sh` to configure git identity, authenticate, and fetch all branches when you need full CLI control.
 - After logging in, update the git remote to push using the PAT:
 
 ```bash
