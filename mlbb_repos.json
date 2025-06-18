@@ -1,0 +1,161 @@
+{
+  "last_updated": "2025-06-18T12:27:47.751159Z",
+  "repos": [
+    {
+      "name": "ahkehra/GameUnlocker",
+      "stars": 110,
+      "url": "https://github.com/ahkehra/GameUnlocker",
+      "category": "performance"
+    },
+    {
+      "name": "N74NK/MLBBTOOL",
+      "stars": 58,
+      "url": "https://github.com/N74NK/MLBBTOOL",
+      "category": "misc"
+    },
+    {
+      "name": "hunternblz/Moonton-Checker",
+      "stars": 40,
+      "url": "https://github.com/hunternblz/Moonton-Checker",
+      "category": "misc"
+    },
+    {
+      "name": "Waxaranai/mpl-id-api",
+      "stars": 11,
+      "url": "https://github.com/Waxaranai/mpl-id-api",
+      "category": "misc"
+    },
+    {
+      "name": "eskeyv/winrate-calculator",
+      "stars": 6,
+      "url": "https://github.com/eskeyv/winrate-calculator",
+      "category": "misc"
+    },
+    {
+      "name": "einnar82/mpl-ph-api",
+      "stars": 5,
+      "url": "https://github.com/einnar82/mpl-ph-api",
+      "category": "misc"
+    },
+    {
+      "name": "cabrata/check-id-mlbb",
+      "stars": 5,
+      "url": "https://github.com/cabrata/check-id-mlbb",
+      "category": "misc"
+    },
+    {
+      "name": "RizkyDave/Joki",
+      "stars": 5,
+      "url": "https://github.com/RizkyDave/Joki",
+      "category": "misc"
+    },
+    {
+      "name": "beingofexistence13/trash-advanced-server",
+      "stars": 4,
+      "url": "https://github.com/beingofexistence13/trash-advanced-server",
+      "category": "misc"
+    },
+    {
+      "name": "RozhakXD/OtpLegends",
+      "stars": 4,
+      "url": "https://github.com/RozhakXD/OtpLegends",
+      "category": "misc"
+    },
+    {
+      "name": "FrenzY8/ML-API",
+      "stars": 4,
+      "url": "https://github.com/FrenzY8/ML-API",
+      "category": "misc"
+    },
+    {
+      "name": "R-N/ml_damage_reduction_chart",
+      "stars": 2,
+      "url": "https://github.com/R-N/ml_damage_reduction_chart",
+      "category": "misc"
+    },
+    {
+      "name": "sudoxE7/MLBBPlayerInfoFetcher",
+      "stars": 2,
+      "url": "https://github.com/sudoxE7/MLBBPlayerInfoFetcher",
+      "category": "misc"
+    },
+    {
+      "name": "z0rielle/mlbb-skin-script",
+      "stars": 2,
+      "url": "https://github.com/z0rielle/mlbb-skin-script",
+      "category": "changer"
+    },
+    {
+      "name": "AzizLike29/Scrap-App-ML",
+      "stars": 2,
+      "url": "https://github.com/AzizLike29/Scrap-App-ML",
+      "category": "misc"
+    },
+    {
+      "name": "R-N/ml_draftpick_dss",
+      "stars": 2,
+      "url": "https://github.com/R-N/ml_draftpick_dss",
+      "category": "misc"
+    },
+    {
+      "name": "mobagenie/mg-build",
+      "stars": 1,
+      "url": "https://github.com/mobagenie/mg-build",
+      "category": "misc"
+    },
+    {
+      "name": "Riswan-Nopiyar/mpl-id-mobile-legends",
+      "stars": 1,
+      "url": "https://github.com/Riswan-Nopiyar/mpl-id-mobile-legends",
+      "category": "misc"
+    },
+    {
+      "name": "sudoxE7/MLBBDialog",
+      "stars": 1,
+      "url": "https://github.com/sudoxE7/MLBBDialog",
+      "category": "misc"
+    },
+    {
+      "name": "sudoxE7/MLBBWinRateCalculator",
+      "stars": 1,
+      "url": "https://github.com/sudoxE7/MLBBWinRateCalculator",
+      "category": "misc"
+    },
+    {
+      "name": "Otniel113/MVPCalculator-Regresi",
+      "stars": 0,
+      "url": "https://github.com/Otniel113/MVPCalculator-Regresi",
+      "category": "misc"
+    },
+    {
+      "name": "jtnqr/Mobile-Legends-on-EXTSD",
+      "stars": 0,
+      "url": "https://github.com/jtnqr/Mobile-Legends-on-EXTSD",
+      "category": "misc"
+    },
+    {
+      "name": "Otniel113/MVPCalculator",
+      "stars": 0,
+      "url": "https://github.com/Otniel113/MVPCalculator",
+      "category": "misc"
+    },
+    {
+      "name": "Bayumaul/api-mpl-id",
+      "stars": 0,
+      "url": "https://github.com/Bayumaul/api-mpl-id",
+      "category": "misc"
+    },
+    {
+      "name": "R-N/ml_yolo_dataset",
+      "stars": 0,
+      "url": "https://github.com/R-N/ml_yolo_dataset",
+      "category": "misc"
+    },
+    {
+      "name": "muhakbarhamid21/mobile-legends-sentiment-analysis",
+      "stars": 0,
+      "url": "https://github.com/muhakbarhamid21/mobile-legends-sentiment-analysis",
+      "category": "misc"
+    }
+  ]
+}
