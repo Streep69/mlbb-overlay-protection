@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-cd ~/mlbb-overlay-protection
+# Ensure we run from the repository root
+cd "$(dirname "$0")"
 
 # Termux Module
 cat > termux/devguard.sh <<'EOT'

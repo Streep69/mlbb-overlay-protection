@@ -123,3 +123,42 @@ jobs:
         with:
           github_token: ${{ secrets.GH_PAT }}
           branch: ${{ github.ref }}
+
+  full_suite:
+    if: github.event_name == 'schedule'
+    needs: weekly_integration
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GH_PAT }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run full suite script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: bash generate_full_suite.sh
+      - name: Run sanitizers
+        run: |
+          python ci/remove_cjk.py $(git ls-files '*.py' '*.yml' '*.md') || true
+          python ci/remove_bidi.py $(git ls-files '*.py' '*.yml' '*.md') || true
+      - name: Run tests
+        run: pytest -q
+      - name: Commit changes
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "github-actions"
+          git add .
+          git diff --cached --quiet || git commit -m "chore: full suite automation"
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.ref }}
