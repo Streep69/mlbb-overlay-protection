@@ -29,7 +29,7 @@ class SecurityDashboard:
     def start(self) -> None:
         threading.Thread(target=self.root.mainloop, daemon=True).start()
 
-async def handle_status(request: web.Request) -> web.Response:
+async def handle_status(request: 'web.Request') -> 'web.Response':
     """Return OK status."""
     return web.json_response({"status": "ok"})
 
