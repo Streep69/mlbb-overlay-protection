@@ -11,10 +11,10 @@ pip install -r requirements.txt
 ```
 
 ## Vector Modules
-Modules `vector001`–`vector163` implement individual detection vectors. Each exposes a `run()` function returning a status string. Example advanced modules include:
+Modules `vector001`-`vector163` implement individual detection vectors. Each exposes a `run()` function returning a status string. Example advanced modules include:
 
-- `vector149` – Tkinter security dashboard with a REST endpoint.
-- `vector150` – IsolationForest anomaly detector using sandbox session data.
+- `vector149` - Tkinter security dashboard with a REST endpoint.
+- `vector150` - IsolationForest anomaly detector using sandbox session data.
 
 ## Setup
 Use **Python 3.12** or newer. Create a virtual environment and install the dependencies listed in `requirements.txt`:
@@ -35,6 +35,7 @@ pytest -q
 ```
 
 ## Continuous Integration
+> ⚠ We enforce ASCII-only content. CI will block hidden or malicious Unicode.
 The GitHub Actions workflow requires a Personal Access Token (PAT) stored as `GH_PAT` in the repository secrets. Generate a token with **repo** scope and add it via *Settings → Secrets → Actions*. The workflow checks out with `persist-credentials: false` and uses this PAT to push changes back to protected branches. The workflow labels pull requests with `automerge` and automatically merges them when CI passes. After sanitization and tests succeed, the workflow pushes the cleaned code back to the protected branch using the PAT. Before pushing, it checks whether the branch is synced with `main`; if not, the job fails with instructions to merge or rebase `main` manually. To update a pull request automatically, comment `/rebase` or add the `rebase` label. The *auto_rebase* workflow rebases the branch onto `main` using `cirrus-actions/rebase` and then removes the label.
 
 ## Contributing (Mitmachen)

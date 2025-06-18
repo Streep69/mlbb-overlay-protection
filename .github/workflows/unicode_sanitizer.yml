@@ -14,7 +14,7 @@ jobs:
         run: |
           git fetch origin main
           git merge --no-commit --allow-unrelated-histories origin/main || {
-            echo '❌ Branch is stale; please merge/rebase main manually and resolve conflicts.'
+            echo 'ERROR: Branch is stale; please merge/rebase main manually and resolve conflicts.'
             exit 1
           }
       - name: Set up Python

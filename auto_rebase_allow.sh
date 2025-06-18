@@ -14,4 +14,4 @@ git merge --no-edit --allow-unrelated-histories -X theirs origin/main
 
 git push origin "$BRANCH" --force-with-lease
 
-echo '✅ Auto rebase with unrelated histories applied and pushed'
+echo 'DONE Auto rebase with unrelated histories applied and pushed'

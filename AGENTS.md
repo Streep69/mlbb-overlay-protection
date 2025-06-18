@@ -4,16 +4,16 @@
 Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Raspberry Pi.
 
 ## Directory Structure
-- `pi/` – Raspberry Pi support and helpers
-- `overlay-app/` – Android overlay app modules
-- `termux/` – Termux scripts and utilities
-- `ci/` – CI configurations and pipelines
-- `tests/` – Unit/integration tests
-- `sandbox/` – experimental or scratch scripts
-- `docs/` – documentation assets
+- `pi/` - Raspberry Pi support and helpers
+- `overlay-app/` - Android overlay app modules
+- `termux/` - Termux scripts and utilities
+- `ci/` - CI configurations and pipelines
+- `tests/` - Unit/integration tests
+- `sandbox/` - experimental or scratch scripts
+- `docs/` - documentation assets
 
 ## Agent Role Instructions
-- Generate `vector001`–`vector163` modules when requested
+- Generate `vector001`-`vector163` modules when requested
 - Sanitize Unicode and auto-fix detectable errors
 - Run tests before committing and commit only clean code
 
