@@ -2,11 +2,28 @@
 
 This project delivers a lightweight anti-cheat framework for Mobile Legends: Bang Bang. It runs without root on an S23 Ultra and streams telemetry to a Raspberry Pi for analysis.
 
+## Installation
+Install the required Python packages using the `requirements.txt` file:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Vector Modules
 Modules `vector001`–`vector163` implement individual detection vectors. Each exposes a `run()` function returning a status string. Example advanced modules include:
 
 - `vector149` – Tkinter security dashboard with a REST endpoint.
 - `vector150` – IsolationForest anomaly detector using sandbox session data.
+
+## Setup
+Use **Python 3.12** or newer. Create a virtual environment and install the
+dependencies listed in `requirements.txt`:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
 ## Development
 Run sanitizers and tests before committing:
@@ -16,3 +33,20 @@ python ci/remove_cjk.py $(git ls-files '*.py')
 python ci/remove_bidi.py $(git ls-files '*.py')
 pytest -q
 ```
+
+## Contributing (Mitmachen)
+* Sanitize all Python files with `ci/remove_cjk.py` and `ci/remove_bidi.py`.
+* Execute `pytest -q` before committing to ensure the test suite passes.
+* Commit only clean code and follow concise commit messages.
+* Remember to update `full_chat_log.md` whenever changes are made.
+
+## Auto Rebase
+Run the automated rebase script in Termux when histories diverge:
+
+```bash
+./auto_rebase_allow.sh
+```
+
+The script executes `git rebase origin/main --allow-unrelated-histories -X theirs`.
+Conflicts are resolved in favor of the feature branch, overwriting files from
+`main` if necessary.
