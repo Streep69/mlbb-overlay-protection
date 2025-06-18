@@ -41,10 +41,12 @@ pytest -q
 * Remember to update `full_chat_log.md` whenever changes are made.
 
 ## Auto Rebase
-Run the automated rebase script in Termux when histories diverge:
+Run the automated rebase script when histories diverge. Pass the branch name as
+an argument or set `BRANCH` to override the default of the current branch. If
+`GH_PAT` is set, the script uses it to authenticate pushes:
 
 ```bash
-./auto_rebase_allow.sh
+./auto_rebase_allow.sh my-feature-branch
 ```
 
 The script executes `git rebase origin/main --allow-unrelated-histories -X theirs`.
