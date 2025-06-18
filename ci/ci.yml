@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  issue_comment:
+
+jobs:
+  build:
+    if: github.event_name != 'issue_comment'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GH_PAT }}
+      - name: Check branch sync with main
+        run: |
+          git fetch origin main
+          git merge --no-commit --allow-unrelated-histories origin/main || {
+            echo 'ERROR: Branch is stale; please merge/rebase main manually and resolve conflicts.'
+            exit 1
+          }
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          sudo apt update && sudo apt install -y adb ffmpeg libusb-1.0-0-dev
+          pip install -r requirements.txt
+      - name: Run sanitizers and tests
+        run: |
+          find . -name '*.py' -exec python3 ci/remove_cjk.py {} +
+          find . -name '*.py' -exec python3 ci/remove_bidi.py {} +
+          pytest --maxfail=1 --disable-warnings -q
+      - name: Push sanitized/tested code
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.head_ref }}
+      - name: Auto-merge on successful CI
+        uses: pascalgn/automerge-action@v0.16.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          merge-method: merge
+          merge-labels: automerge
+
+  auto_rebase:
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/rebase')) ||
+      (github.event_name == 'push' && contains(github.event.head_commit.message, '/rebase'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GH_PAT }}
+      - name: Run auto rebase script
+        run: bash ./auto_rebase_allow.sh
