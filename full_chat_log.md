@@ -8,3 +8,4 @@ Added auto-rebase script and workflow to handle unrelated histories with -X thei
 Updated requirements and CI to install system packages, added auto_rebase_allow.sh instructions.
 Added unicode sanity checks workflow and enforced ASCII scripts.
 Added GitHub CLI authentication script with PAT setup instructions.
+Added AGENTS.md with Codex guidance and security workflow.

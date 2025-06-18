@@ -48,6 +48,7 @@ git remote set-url origin https://x-access-token:${GH_PAT}@github.com/Streep69/m
 * Execute `pytest -q` before committing to ensure the test suite passes.
 * Commit only clean code and follow concise commit messages.
 * Remember to update `full_chat_log.md` whenever changes are made.
+* See `AGENTS.md` for detailed project workflow and security guidelines.
 
 ## Auto Rebase
 Run the automated rebase script when histories diverge:

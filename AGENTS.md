@@ -1,4 +1,5 @@
 # Codex Agents Guidance
+This document describes the workflow Codex agents must follow when contributing to this repository.
 
 ## Project Overview
 Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Raspberry Pi.
