@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 aiohttp
 numpy
 opencv-python-headless
@@ -6,4 +7,9 @@ pure-python-adb
 pyshark
 pyyaml
 scikit-learn
+=======
+numpy
+scikit-learn
+aiohttp
+>>>>>>> origin/main
 pytest
