@@ -9,6 +9,8 @@ jobs:
   build:
     if: github.event_name != 'issue_comment'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,8 +54,11 @@ jobs:
       (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/rebase')) ||
       (github.event_name == 'push' && contains(github.event.head_commit.message, '/rebase'))
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
           token: ${{ secrets.GH_PAT }}
