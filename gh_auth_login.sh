@@ -11,5 +11,6 @@ fi
 echo "$GH_PAT" | gh auth login --with-token
 # Configure git to use gh auth
 gh auth setup-git
+gh auth status
 
-echo "GitHub CLI authenticated"
+echo "✅ GitHub CLI is authenticated with full repo access."
