@@ -10,6 +10,13 @@ sudo apt update && sudo apt install -y adb ffmpeg libusb-1.0-0-dev
 pip install -r requirements.txt
 ```
 
+### Termux Setup
+On Android, use Termux to run the overlay tools. The helper script installs dependencies automatically:
+
+```bash
+bash termux/setup_termux.sh
+```
+
 ## Vector Modules
 Modules `vector001`–`vector163` implement detection vectors. Example advanced modules include:
 
@@ -79,6 +86,7 @@ Use the sync script to merge `main` into your branch automatically when simple c
 ```
 
 It merges `main` using `git merge -X ours` to prefer the branch's version and pushes back with `--force-with-lease`.
+CI performs the same sync automatically using `.github/scripts/auto_sync.sh` and the `GH_PAT` token.
 
 ## Merge Codex Branches
 When several `codex-*` branches exist on the remote, you can consolidate them

@@ -12,3 +12,5 @@ Added AGENTS.md with Codex guidance and security workflow.
 Added codex_cli_setup.sh for PAT authentication and git setup.
 Added GH_PAT-based workflows and documented usage.
 Workflows now set git identity to github-actions[bot] before running tests.
+Added auto_sync script and CI workflow to keep branches in sync using GH_PAT.
+Added Termux setup script for Android environments.
