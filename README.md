@@ -39,6 +39,7 @@ pytest -q
 
 - Use `./gh_auth_login.sh` to install GitHub CLI, authenticate with `GH_PAT`, and verify authentication.
 - Run `./codex_cli_setup.sh` to configure git identity and fetch all branches.
+- CI sets the git committer identity to `github-actions[bot]` so workflow commits are attributed correctly.
 - After logging in, update the git remote to push using the PAT:
 
 ```bash
