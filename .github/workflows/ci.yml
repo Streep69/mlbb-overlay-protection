@@ -1,0 +1,164 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  issue_comment:
+  schedule:
+    - cron: '0 3 * * 1'
+
+jobs:
+  build:
+    if: github.event_name != 'issue_comment'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GH_PAT }}
+      - name: Check branch sync with main
+        run: |
+          git fetch origin main
+          git merge --no-commit --allow-unrelated-histories origin/main || {
+              echo '❌ Branch is stale; please merge/rebase main manually and resolve conflicts.'
+              exit 1
+          }
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run sanitizers
+        run: |
+          python ci/remove_cjk.py $(git ls-files '*.py' '*.yml' '*.md') || true
+          python ci/remove_bidi.py $(git ls-files '*.py' '*.yml' '*.md') || true
+      - name: Run tests
+        run: pytest -q
+      - name: Commit sanitized files
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "github-actions"
+          git diff --quiet || git commit -am "chore: sanitize unicode"
+      - name: Push changes
+        if: github.event_name == 'push'
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.head_ref }}
+      - name: Auto-merge PR after CI
+        uses: pascalgn/automerge-action@v0.16.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          merge-method: merge
+          merge-labels: automerge
+
+  auto_rebase:
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/rebase')) ||
+      (github.event_name == 'push' && contains(github.event.head_commit.message, '/rebase'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GH_PAT }}
+      - name: Run auto rebase script
+        run: bash ./auto_rebase_allow.sh
+      - name: Run sanitizers and tests
+        run: |
+          find . -name '*.py' -exec python3 ci/remove_cjk.py {} +
+          find . -name '*.py' -exec python3 ci/remove_bidi.py {} +
+          pytest --maxfail=1 --disable-warnings -q
+      - name: Push rebased branch
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.head_ref }}
+      - name: Auto-merge PR after CI
+        uses: pascalgn/automerge-action@v0.16.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          merge-method: merge
+          merge-labels: automerge
+
+  weekly_integration:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GH_PAT }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run integration generator
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: python mlbb_integration_generator.py
+      - name: Run sanitizers
+        run: |
+          python ci/remove_cjk.py $(git ls-files '*.py' '*.yml' '*.md') || true
+          python ci/remove_bidi.py $(git ls-files '*.py' '*.yml' '*.md') || true
+      - name: Run tests
+        run: pytest -q
+      - name: Commit changes
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "github-actions"
+          git add mlbb_repos.json vector/integrations CHANGELOG.md
+          git diff --cached --quiet || git commit -m "chore: auto-integrate MLBB repos ($(date -u +%Y-%m-%d))"
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.ref }}
+
+  full_suite:
+    if: github.event_name == 'schedule'
+    needs: weekly_integration
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GH_PAT }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run full suite script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: bash generate_full_suite.sh
+      - name: Run sanitizers
+        run: |
+          python ci/remove_cjk.py $(git ls-files '*.py' '*.yml' '*.md') || true
+          python ci/remove_bidi.py $(git ls-files '*.py' '*.yml' '*.md') || true
+      - name: Run tests
+        run: pytest -q
+      - name: Commit changes
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "github-actions"
+          git add .
+          git diff --cached --quiet || git commit -m "chore: full suite automation"
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.ref }}
