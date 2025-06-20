@@ -79,3 +79,15 @@ Use the sync script to merge `main` into your branch automatically when simple c
 ```
 
 It merges `main` using `git merge -X ours` to prefer the branch's version and pushes back with `--force-with-lease`.
+
+## Merge Codex Branches
+When several `codex-*` branches exist on the remote, you can consolidate them
+into `main` with:
+
+```bash
+./merge_codex_branches.sh
+```
+
+The script creates a backup branch for each merge, resolves conflicts by
+renaming both versions, sanitizes all files, runs the tests, regenerates
+`requirements.txt`, and force pushes the updated `main` branch.
