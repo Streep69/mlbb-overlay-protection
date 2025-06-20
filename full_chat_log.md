@@ -14,3 +14,4 @@ Added GH_PAT-based workflows and documented usage.
 Workflows now set git identity to github-actions[bot] before running tests.
 Added auto_sync script and CI workflow to keep branches in sync using GH_PAT.
 Added Termux setup script for Android environments.
+Added one_click_analyse script for automated Codex merges.

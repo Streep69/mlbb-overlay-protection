@@ -4,6 +4,11 @@
 set -Eeuo pipefail
 IFS=$'\n\t'
 
+: "${GH_PAT:?GH_PAT secret missing (Settings ➜ Secrets ➜ Actions ➜ GH_PAT)}"
+
+repo=$(git config --get remote.origin.url | sed -E 's#https://[^/]+/##;s#\.git$##')
+git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${repo}.git"
+
 # Ensure we start from a clean main branch
 git fetch origin
 git checkout main

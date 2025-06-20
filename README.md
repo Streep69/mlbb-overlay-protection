@@ -100,3 +100,13 @@ The script creates a backup branch for each merge, resolves conflicts by
 renaming both versions, sanitizes files for ASCII compliance, logs diffs and
 commit history to the `vector/` folder, runs the tests, regenerates
 `requirements.txt`, and force pushes the updated `main` branch.
+
+### One-Click Automation
+Run the entire merge and cleanup process from any environment with:
+
+```bash
+bash <(curl -s https://raw.githubusercontent.com/Streep69/mlbb-overlay-protection/main/one_click_analyse.sh)
+```
+
+The script expects a `GH_PAT` environment variable and invokes
+`merge_codex_branches.sh` after installing dependencies.
