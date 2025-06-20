@@ -79,6 +79,7 @@ Use the sync script to merge `main` into your branch automatically when simple c
 ```
 
 It merges `main` using `git merge -X ours` to prefer the branch's version and pushes back with `--force-with-lease`.
+CI performs the same sync automatically using `.github/scripts/auto_sync.sh` and the `GH_PAT` token.
 
 ## Merge Codex Branches
 When several `codex-*` branches exist on the remote, you can consolidate them
