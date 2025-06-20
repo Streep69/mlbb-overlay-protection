@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+
+cd ~/mlbb-overlay-protection || {
+  echo "❌ Repo not found in ~/mlbb-overlay-protection."
+  exit 1
+}
+
+BRANCH="0mjgdv-codex/add-agents.md-to-mlbb-cheat-project"
+git fetch origin "$BRANCH"
+git checkout "$BRANCH"
+
+git fetch origin main
+if ! git merge origin/main --no-edit; then
+  echo "⚠️ Merge conflicts detected. Auto-resolving using '--ours'..."
+  # Choose feature branch version for all conflicts
+  git checkout --ours .
+  git add .
+  git commit -m "Auto-resolve merge using 'ours' strategy"
+else
+  echo "✅ Merge succeeded with no conflicts."
+fi
+
+git push origin "$BRANCH" --force-with-lease
+echo "✅ Branch synced and pushed. CI will now restart."
+

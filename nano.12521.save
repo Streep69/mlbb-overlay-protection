@@ -1,0 +1,40 @@
+#!/bin/bash
+# 1-Click Script to Fix "Branch is stale; please merge/rebase main manually and resolve conflicts."
+# Usage: ./fix_branch_stale.sh <branch-name>
+# This script is pre-configured for the Streep69/mlbb-overlay-protection repo.
+
+set -e
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 <branch-name>"
+  exit 1
+fi
+
+BRANCH="$1"
+MAIN_BRANCH="main"
+REMOTE="origin"
+REPO_URL="https://github.com/Streep69/mlbb-overlay-protection.git"
+
+# Ensure repository is present
+if [ ! -d ".git" ]; then
+  echo "Cloning repository..."
+  git clone "$REPO_URL"
+  cd mlbb-overlay-protection
+fi
+
+# Fetch latest from remote
+git fetch "$REMOTE" "$MAIN_BRANCH"
+
+# Checkout your working branch
+git checkout "$BRANCH"
+
+# Rebase onto main (preferred, rewrites history if needed)
+git rebase "$REMOTE/$MAIN_BRANCH" || {
+  echo "❌ Rebase failed. Resolve conflicts, then run: git rebase --continue"
+  exit 1
+}
+
+# Push with force to update branch on remote
+git push --force-with-lease
+
+echo "✅ Branch '$BRANCH' successfully rebased onto main and pushed!"
