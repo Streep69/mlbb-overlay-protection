@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-set -Eeuo pipefail; IFS=$'\n\t'
+set -Eeuo pipefail
+IFS=$'\n\t'
+
+if [ -z "${GH_PAT:-}" ]; then
+  echo "ERROR: GH_PAT environment variable not set" >&2
+  exit 1
+fi
 
 git config --global user.name  "github-actions[bot]"
 git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -25,5 +31,7 @@ else
   git commit -m "ci: auto-resolve add/add (ours + .from-main)"
 fi
 
+# configure remote with PAT to push to protected branches
+git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git"
 git push --force-with-lease origin "$branch"
 echo "🚀 branch updated"
