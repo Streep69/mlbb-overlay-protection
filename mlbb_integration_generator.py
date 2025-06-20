@@ -13,6 +13,11 @@ from typing import List
 import urllib.request
 import urllib.parse
 
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
+REPO_PATH = os.getenv('REPO_PATH', os.getcwd())
+
 CATEGORY_KEYWORDS = {
     'maphack': ['maphack', 'wallhack'],
     'drone': ['drone', 'droneview'],
@@ -24,8 +29,10 @@ CATEGORY_KEYWORDS = {
 API_URL = "https://api.github.com/search/repositories"
 
 
-def fetch_repositories(token: str | None) -> List[dict]:
+def fetch_repositories(token: str | None = None) -> List[dict]:
     """Fetch repositories by topic."""
+    if token is None:
+        token = GITHUB_TOKEN
     query = urllib.parse.quote("topic:mobile-legends")
     url = f"{API_URL}?q={query}&sort=stars&order=desc&per_page=100"
     headers = {"Accept": "application/vnd.github+json"}
@@ -97,9 +104,44 @@ def integrate(config):
     return module_path
 
 
+def _run_codex() -> None:
+    """Run Codex to refactor the overlay engine if OPENAI_API_KEY is present."""
+    if not OPENAI_API_KEY:
+        return
+    prompt = """
+Refactor MLBB overlay engine ...
+1. dynamic zoom overlay for drone map
+...
+"""
+    subprocess.run([
+        'codex',
+        '--full-auto',
+        '--approval-mode', 'full-auto',
+        '--prompt', prompt,
+    ], cwd=REPO_PATH)
+
+
+def _notify_discord(message: str) -> None:
+    """Post a message to Discord if configured."""
+    if not DISCORD_WEBHOOK_URL:
+        return
+    payload = json.dumps({'content': message}).encode('utf-8')
+    req = urllib.request.Request(
+        DISCORD_WEBHOOK_URL,
+        data=payload,
+        headers={'Content-Type': 'application/json'},
+    )
+    try:
+        urllib.request.urlopen(req)
+    except Exception:
+        pass
+
+
 def main() -> None:
-    token = os.getenv('GITHUB_TOKEN')
-    repos = fetch_repositories(token)
+    if not GITHUB_TOKEN:
+        print('❌ Missing GITHUB_TOKEN.')
+        return
+    repos = fetch_repositories()
     selected = []
     for repo in repos:
         name = repo.get('name', '')
@@ -132,6 +174,10 @@ def main() -> None:
     else:
         changelog.write_text(f"# Changelog{entry}", encoding='utf-8')
 
+    _run_codex()
+    _notify_discord(f"✅ MLBB integrations updated at { _dt.datetime.utcnow().isoformat()} UTC")
+
 
 if __name__ == '__main__':
     main()
+
