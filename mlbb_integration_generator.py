@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate integration modules for top Mobile Legends: Bang Bang repositories."""
+"""Generate integration modules for top MLBB repositories."""
 from __future__ import annotations
 import ast
 import datetime as _dt
@@ -93,11 +93,18 @@ from pathlib import Path
 def setup() -> Path:
     """Clone the repository."""
     temp = Path(tempfile.mkdtemp(prefix='{name}_'))
-    subprocess.run(['git', 'clone', '--depth', '1', '{repo['clone_url']}', str(temp)], check=True)
+    subprocess.run(
+        ['git', 'clone', '--depth', '1', '{repo['clone_url']}', str(temp)],
+        check=True,
+    )
     return temp
 
 def integrate(config):
-    """Integrate detected modules.\n\n    Detected symbols: {sym_list}\n    TODO: wire into overlay lifecycle.\n    """
+    """Integrate detected modules.
+
+    Detected symbols: {sym_list}
+    TODO: wire into overlay lifecycle.
+    """
     raise NotImplementedError
 '''
     module_path.write_text(code, encoding='utf-8')
@@ -105,7 +112,7 @@ def integrate(config):
 
 
 def _run_codex() -> None:
-    """Run Codex to refactor the overlay engine if OPENAI_API_KEY is present."""
+    """Run Codex to refactor the overlay engine if `OPENAI_API_KEY` is set."""
     if not OPENAI_API_KEY:
         return
     prompt = """
@@ -158,26 +165,39 @@ def main() -> None:
         selected.append(info)
         if repo['stargazers_count'] >= 10:
             with tempfile.TemporaryDirectory() as td:
-                subprocess.run(['git', 'clone', '--depth', '1', repo['clone_url'], td], check=False)
+                subprocess.run(
+                    ['git', 'clone', '--depth', '1', repo['clone_url'], td],
+                    check=False,
+                )
                 symbols = analyze_python(Path(td))
             generate_module(repo, category, symbols)
     data = {
         'last_updated': _dt.datetime.utcnow().isoformat() + 'Z',
         'repos': selected,
     }
-    Path('mlbb_repos.json').write_text(json.dumps(data, indent=2), encoding='utf-8')
+    Path('mlbb_repos.json').write_text(
+        json.dumps(data, indent=2),
+        encoding='utf-8',
+    )
     changelog = Path('CHANGELOG.md')
     date = _dt.date.today().isoformat()
     entry = f"\n## Community Integrations ({date})\n- Version bump\n"
     if changelog.exists():
-        changelog.write_text(changelog.read_text(encoding='utf-8') + entry, encoding='utf-8')
+        changelog.write_text(
+            changelog.read_text(encoding='utf-8') + entry,
+            encoding='utf-8',
+        )
     else:
         changelog.write_text(f"# Changelog{entry}", encoding='utf-8')
 
     _run_codex()
-    _notify_discord(f"✅ MLBB integrations updated at { _dt.datetime.utcnow().isoformat()} UTC")
+    _notify_discord(
+        (
+            "✅ MLBB integrations updated at "
+            f"{_dt.datetime.utcnow().isoformat()} UTC"
+        )
+    )
 
 
 if __name__ == '__main__':
     main()
-
