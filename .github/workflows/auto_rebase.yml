@@ -1,0 +1,48 @@
+name: Auto Rebase
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  rebase:
+    if: github.event.issue.pull_request != null && contains(github.event.comment.body, '/rebase')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+      - name: Set git identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          echo "✔ Git identity set to $(git config --global user.name) <$(git config --global user.email)>"
+      - name: Automatic rebase
+        uses: cirrus-actions/rebase@1.8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      - name: Remove label
+        if: contains(github.event.issue.labels.*.name, 'rebase')
+        uses: actions-ecosystem/remove-labels@v1
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          labels: rebase
+      - name: Run sanitizers and tests
+        run: |
+          sudo apt update && sudo apt install -y adb ffmpeg libusb-1.0-0-dev
+          pip install -r requirements.txt
+          find . -name '*.py' -exec python3 ci/remove_cjk.py {} +
+          find . -name '*.py' -exec python3 ci/remove_bidi.py {} +
+          pytest --maxfail=1 --disable-warnings -q
+      - name: Auto-merge PR after CI
+        uses: pascalgn/automerge-action@v0.16.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          merge-method: merge
+          merge-labels: automerge
