@@ -26,7 +26,9 @@ jobs:
 
     - name: ASCII guard
       run: |
-        grep -R -nP '[^\x00-\x7F]' --include='*.{py,sh,json,yaml,yml}' \
+        grep -R -nP '[^\x00-\x7F]' \
+          --include='*.py' --include='*.sh' \
+          --include='*.json' --include='*.yaml' --include='*.yml' \
           --exclude-dir='.git' . \
           && { echo 'non-ASCII in code'; exit 1; } \
           || echo 'ASCII clean'
