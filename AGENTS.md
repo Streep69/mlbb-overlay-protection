@@ -57,3 +57,5 @@ Treat the project as an adversarial AI/anti-cheat system with RL adaptation. Mai
 - The script rebases with `--allow-unrelated-histories -X theirs`, pushes the result, and resolves conflicts in favor of the branch.
 - When merge conflicts need a quick resolution, run `./auto_resolve_conflicts.sh`. It merges with `main`, renames conflicted files with a `2` suffix, and pushes using `GH_PAT`.
 - Run `./codex_cli_setup.sh` to configure git identity, authenticate the GitHub CLI, and fetch all branches when full repository control is required.
+
+Keep this guidance updated as the project evolves to ensure consistency and security.
