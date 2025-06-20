@@ -10,6 +10,13 @@ sudo apt update && sudo apt install -y adb ffmpeg libusb-1.0-0-dev
 pip install -r requirements.txt
 ```
 
+### Termux Setup
+On Android, use Termux to run the overlay tools. The helper script installs dependencies automatically:
+
+```bash
+bash termux/setup_termux.sh
+```
+
 ## Vector Modules
 Modules `vector001`–`vector163` implement detection vectors. Example advanced modules include:
 

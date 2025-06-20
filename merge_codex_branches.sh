@@ -80,7 +80,10 @@ PYCODE
 
     echo "Running tests"
     pip install -r requirements.txt >/dev/null 2>&1 || true
-    pytest -q || echo "Tests failed or missing; consider adding integration tests."
+    if ! pytest -q; then
+        echo -e "\e[31mTests failed for $remote. Aborting merge.\e[0m"
+        exit 1
+    fi
 
     pip freeze > requirements.txt
     git add requirements.txt
