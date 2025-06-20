@@ -56,9 +56,10 @@ Treat the project as an adversarial AI/anti-cheat system with RL adaptation. Mai
 - Execute `./auto_rebase_allow.sh` when the feature branch falls behind `main`.
 - The script rebases with `--allow-unrelated-histories -X theirs`, pushes the result, and resolves conflicts in favor of the branch.
 - When merge conflicts need a quick resolution, run `./auto_resolve_conflicts.sh`. It merges with `main`, renames conflicted files with a `2` suffix, and pushes using `GH_PAT`.
-- To automatically merge the latest `main` without manual conflict resolution, run `./auto_sync_branch.sh`. It keeps your branch's changes when overlaps occur and pushes back with `--force-with-lease`.
+- To automatically merge the latest `main` without manual conflict resolution, run `./auto_sync_branch.sh`. It keeps your branch's changes when overlaps occur and pushes back with `--force-with-lease`. CI uses `.github/scripts/auto_sync.sh` with `GH_PAT` for the same purpose.
 - Run `./codex_cli_setup.sh` to configure git identity, authenticate the GitHub CLI, and fetch all branches when full repository control is required.
 - Use `./merge_codex_branches.sh` to merge all codex-* branches into main after running tests.
+- For fully automated merging and sanitization, execute `one_click_analyse.sh` from the main branch URL.
 - CI workflows set the committer identity to `github-actions[bot]` so commits made during automation use a consistent account.
 
 Keep this guidance updated as the project evolves to ensure consistency and security.
