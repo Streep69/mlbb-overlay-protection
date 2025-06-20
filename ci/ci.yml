@@ -46,8 +46,9 @@ jobs:
         if: github.event_name == 'push'
         uses: ad-m/github-push-action@v0.8.0
         with:
-          github_token: ${{ secrets.GH_PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.head_ref }}
+          force: true
       - name: Auto-merge PR after CI
         uses: pascalgn/automerge-action@v0.16.4
         env:
@@ -76,8 +77,9 @@ jobs:
       - name: Push rebased branch
         uses: ad-m/github-push-action@v0.8.0
         with:
-          github_token: ${{ secrets.GH_PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.head_ref }}
+          force: true
       - name: Auto-merge PR after CI
         uses: pascalgn/automerge-action@v0.16.4
         env:
@@ -121,5 +123,6 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@v0.8.0
         with:
-          github_token: ${{ secrets.GH_PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+          force: true
