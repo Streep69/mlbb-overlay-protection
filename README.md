@@ -89,5 +89,6 @@ into `main` with:
 ```
 
 The script creates a backup branch for each merge, resolves conflicts by
-renaming both versions, sanitizes all files, runs the tests, regenerates
+renaming both versions, sanitizes files for ASCII compliance, logs diffs and
+commit history to the `vector/` folder, runs the tests, regenerates
 `requirements.txt`, and force pushes the updated `main` branch.
