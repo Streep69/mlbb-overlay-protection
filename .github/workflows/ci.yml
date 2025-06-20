@@ -1,0 +1,33 @@
+name: build
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with: { fetch-depth: 0 }
+
+    - name: Auto-sync with main
+      run: bash .github/scripts/auto_sync.sh
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with: { python-version: '3.12' }
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        [ -f requirements.txt ] && pip install -r requirements.txt || true
+
+    - name: ASCII guard
+      run: |
+        grep -R -nP '[^\x00-\x7F]' --include='*.{py,sh,json,yaml,yml}' \
+          --exclude-dir='.git' . \
+          && { echo '❌ non-ASCII in code'; exit 1; } \
+          || echo '✅ code ASCII clean'
+
+    - name: Unit tests
+      run: pytest -q
