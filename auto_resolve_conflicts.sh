@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -e
-cd "$(git rev-parse --show-toplevel)" || { echo '❌ Repo not found'; exit 1; }
+cd "$(git rev-parse --show-toplevel)" || { echo 'ERROR: repo not found'; exit 1; }
 BRANCH="${1:-${BRANCH:-$(git symbolic-ref --quiet --short HEAD || echo '')}}"
 if [ -z "$BRANCH" ]; then
-  echo "❌ No branch specified" >&2
+  echo "ERROR: no branch specified" >&2
   exit 1
 fi
 
 if [ -z "$GH_PAT" ]; then
-  echo "❌ GH_PAT not set. Add it as an environment variable or use gh_auth_login.sh." >&2
+  echo "ERROR: GH_PAT not set. Add it as an environment variable or use gh_auth_login.sh." >&2
   exit 1
 fi
 
@@ -53,4 +53,4 @@ else
   git push origin "$BRANCH" --force-with-lease
 fi
 
-echo "✅ Auto-resolve complete, conflicts renamed, pushed securely!"
+echo "Auto-resolve complete, conflicts renamed, pushed securely!"

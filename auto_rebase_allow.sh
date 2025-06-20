@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -e
-cd "$(git rev-parse --show-toplevel)" || { echo '❌ Repo not found'; exit 1; }
+cd "$(git rev-parse --show-toplevel)" || { echo 'ERROR: repo not found'; exit 1; }
 BRANCH="${1:-${BRANCH:-$(git symbolic-ref --quiet --short HEAD || echo '')}}"
 if [ -z "$BRANCH" ]; then
-  echo "❌ No branch specified" >&2
+  echo "ERROR: no branch specified" >&2
   exit 1
 fi
 
@@ -26,4 +26,4 @@ else
   git push origin "$BRANCH" --force-with-lease
 fi
 
-echo "✅ Rebase with unrelated histories complete and pushed for $BRANCH."
+echo "Rebase with unrelated histories complete and pushed for $BRANCH."

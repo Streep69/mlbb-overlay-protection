@@ -10,19 +10,19 @@ fi
 git config --global user.name  "github-actions[bot]"
 git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 branch=$(git rev-parse --abbrev-ref HEAD)
-echo "🔄 syncing $branch with origin/main"
+echo "Syncing $branch with origin/main"
 
 git fetch --quiet origin main
 if git merge-base --is-ancestor origin/main "$branch"; then
-  echo "✅ up-to-date"; exit 0; fi
+  echo "Branch is up-to-date"; exit 0; fi
 
-echo "↻ merging origin/main (prefer ours)…"
+echo "Merging origin/main (prefer ours)"
 if git merge -X ours --no-edit origin/main; then
-  echo "✅ merge clean"
+  echo "Merge clean"
 else
-  echo "⚠ resolving add/add conflicts"
+  echo "Resolving add/add conflicts"
   for f in $(git diff --name-only --diff-filter=U); do
-    echo " • $f"
+    echo " - $f"
     git checkout --ours  -- "$f"
     git checkout --theirs -- "$f"
     mv "$f" "${f}.from-main"
@@ -34,4 +34,4 @@ fi
 # configure remote with PAT to push to protected branches
 git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git"
 git push --force-with-lease origin "$branch"
-echo "🚀 branch updated"
+echo "Branch updated"

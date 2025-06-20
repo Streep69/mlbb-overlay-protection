@@ -12,7 +12,7 @@ fi
 
 # 2. Authenticate GitHub CLI with PAT
 if [ -z "$GH_PAT" ]; then
-  echo "\u274c GH_PAT is not set. Please add it as a repo secret or set it in your environment." >&2
+  echo "ERROR: GH_PAT is not set. Add it as a repo secret or set it in your environment." >&2
   exit 1
 fi
 
@@ -25,4 +25,4 @@ fi
 
 git fetch origin --all
 
-echo '✅ Codex CLI: Full control granted (via injected PAT, not leaked)!'
+echo 'Codex CLI: full control granted via injected PAT'
