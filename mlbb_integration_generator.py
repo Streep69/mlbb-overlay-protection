@@ -10,8 +10,43 @@ import tempfile
 import unicodedata
 from pathlib import Path
 from typing import List
-import urllib.request
 import urllib.parse
+import urllib.request
+
+
+def run_codex() -> None:
+    """Invoke Codex for overlay refactoring if API key is set."""
+    if not OPENAI_API_KEY:
+        return
+    prompt = (
+        "Refactor MLBB overlay engine ...\n"
+        "1. dynamic zoom overlay for drone map\n"
+        "..."
+    )
+    subprocess.run(
+        [
+            "codex",
+            "--full-auto",
+            "--approval-mode",
+            "full-auto",
+            "--prompt",
+            prompt,
+        ],
+        cwd=REPO_PATH,
+        check=False,
+    )
+
+
+def notify_discord(message: str) -> None:
+    """Send a message via Discord webhook if configured."""
+    if not DISCORD_WEBHOOK_URL:
+        return
+    import requests
+
+    try:
+        requests.post(DISCORD_WEBHOOK_URL, json={"content": message}, timeout=5)
+    except Exception:
+        pass
 
 CATEGORY_KEYWORDS = {
     'maphack': ['maphack', 'wallhack'],
@@ -22,6 +57,10 @@ CATEGORY_KEYWORDS = {
 }
 
 API_URL = "https://api.github.com/search/repositories"
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
+REPO_PATH = os.getenv("REPO_PATH", os.getcwd())
 
 
 def fetch_repositories(token: str | None) -> List[dict]:
@@ -131,6 +170,10 @@ def main() -> None:
         changelog.write_text(changelog.read_text(encoding='utf-8') + entry, encoding='utf-8')
     else:
         changelog.write_text(f"# Changelog{entry}", encoding='utf-8')
+
+    run_codex()
+    timestamp = _dt.datetime.utcnow().isoformat() + 'Z'
+    notify_discord(f"✅ MLBB integrations updated at {timestamp}")
 
 
 if __name__ == '__main__':

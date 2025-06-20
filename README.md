@@ -71,3 +71,12 @@ If merging `main` results in conflicts you want to resolve quickly, run the auto
 ```
 
 It merges `main` with `-X theirs`, renames conflicted files with a `2` suffix, and pushes the result using `GH_PAT`.
+
+## MLBB Integration Automation
+`mlbb_integration_generator.py` discovers trending Mobile Legends cheat repositories and generates stub integration modules under `vector/integrations/`. After creating modules, it optionally invokes Codex for overlay refactoring and sends a Discord notification if `DISCORD_WEBHOOK_URL` is set.
+
+Run the generator with network access:
+
+```bash
+python mlbb_integration_generator.py
+```
