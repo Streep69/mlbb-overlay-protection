@@ -8,7 +8,6 @@ Install the required Python packages using the `requirements.txt` file:
 ```bash
 pip install -r requirements.txt
 ```
-The file now includes `requests` for sending webhook notifications.
 
 ## Vector Modules
 Modules `vector001`–`vector163` implement individual detection vectors. Each exposes a `run()` function returning a status string. Example advanced modules include:
