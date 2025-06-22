@@ -1,0 +1,11 @@
+"""
+Module Name: 
+Purpose: 
+Author: 
+Created: 
+Description:
+- Inputs:
+- Outputs:
+- Anti-detection notes:
+- Test/validation:
+"""
