@@ -1,0 +1,22 @@
+{
+  "vectors": [
+    {
+      "name": "vector150_maphack.py",
+      "type": "cheat",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector223_entropy.py",
+      "type": "entropy",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    }
+  ],
+  "scripts": [
+    {
+      "name": "compile_obf.sh",
+      "purpose": "build/obfuscate"
+    }
+  ]
+}
