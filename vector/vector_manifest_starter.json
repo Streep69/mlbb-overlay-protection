@@ -11,12 +11,22 @@
       "type": "entropy",
       "hash": "PLACEHOLDER",
       "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector315_overlay_loadtest.py",
+      "type": "utility",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
     }
   ],
   "scripts": [
     {
       "name": "compile_obf.sh",
       "purpose": "build/obfuscate"
+    }
+    , {
+      "name": "overlay_loadtest_analyzer.py",
+      "purpose": "analyze overlay load test logs"
     }
   ]
 }

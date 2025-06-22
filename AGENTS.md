@@ -11,6 +11,7 @@ This project’s automation and vector logic are managed by modular agents.
 | EntropyAgent           | vectors/vector005_entropy.py   | Adds entropy, session random  | Overlay state           | New entropy    | OverlayManager|
 | AntiBanAgent           | vectors/vector010_antiban_overlay.py | Hide overlay/screens, log clean | System events         | Clean state    |               |
 | TapBotAgent            | vectors/vector004_tapbot.py    | Simulates human tap entropy   | Tap command             | Touch event    | EntropyAgent  |
+| LoadTestAgent         | vector315_overlay_loadtest.py   | Overlay stress/load test cycles, provides `run()` and `self_clean()` | cycles config        | Remaining handles | OverlayManager |
 
 ## Extension/Onboarding Instructions
 

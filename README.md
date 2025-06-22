@@ -32,6 +32,10 @@ python ci/remove_cjk.py $(git ls-files '*.py')
 python ci/remove_bidi.py $(git ls-files '*.py')
 pytest -q
 ```
+### Overlay Load Test
+Use `vector315_overlay_loadtest.py` to stress overlay handles. Logs are written to `/test/overlay_loadtest_audit.log` by default. Override the path with the `LOADTEST_LOG_PATH` environment variable.
+Run `scripts/overlay_loadtest_analyzer.py <log>` to summarize cycles and spawn counts from the audit log.
+
 
 ## Continuous Integration
 The GitHub Actions workflow requires a Personal Access Token (PAT) stored as `GH_PAT` in the repository secrets. Generate a token with **repo** scope and add it via *Settings → Secrets → Actions*. The workflow checks out with `persist-credentials: false` and uses this PAT to push changes back to protected branches.
