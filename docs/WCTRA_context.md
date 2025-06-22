@@ -10,6 +10,7 @@ Built for MLBB, S23 Ultra, Pi, and Termux. Features include overlay injection, E
 - Full vector module library, memory safe, Codex-ready
 - Device relays for Pi/Termux
 - CI/obfuscation, build/test automation
+- Overlay load testing for memory leaks
 - Full onboarding, changelog, registry, AI context
 
 ## Risks

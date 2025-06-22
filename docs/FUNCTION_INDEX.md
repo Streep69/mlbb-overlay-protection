@@ -12,3 +12,4 @@ Every function in all vectors/scripts, indexed for Codex/LLM context and AI onbo
 - inject_module(): Loads cheats into memory
 - handle_screenshot(): Hides overlay on screenshot
 - relay_command(): Relays tapbot/overlay commands to device
+- overlay_loadtest(): Stress test overlay spawn and cleanup cycles
