@@ -1,5 +1,36 @@
-# Codex Agents Guidance
+# AGENTS.md – Modular Overlay Protection Agents
 
+This project’s automation and vector logic are managed by modular agents.
+
+## Core Agents
+
+| Agent Name             | Module/File               | Purpose                       | Input                   | Output         | Dependencies   |
+|------------------------|--------------------------|-------------------------------|-------------------------|----------------|---------------|
+| OverlayManagerAgent    | vectors/vector002_overlay.py   | Handles ESP/map overlays      | Game state, config      | Rendered UI    | EntropyAgent  |
+| MapHackAgent           | vectors/vector001_maphack.py   | Reveals minimap info          | Raw map memory          | Entity list    |               |
+| EntropyAgent           | vectors/vector005_entropy.py   | Adds entropy, session random  | Overlay state           | New entropy    | OverlayManager|
+| AntiBanAgent           | vectors/vector010_antiban_overlay.py | Hide overlay/screens, log clean | System events         | Clean state    |               |
+| TapBotAgent            | vectors/vector004_tapbot.py    | Simulates human tap entropy   | Tap command             | Touch event    | EntropyAgent  |
+
+## Extension/Onboarding Instructions
+
+- **All new agents must:**
+    - Be listed here with module, I/O, and dependencies.
+    - Provide `run()` and (if needed) `self_clean()`, `audit()` functions.
+    - Log major actions for auditing and Codex retracing.
+    - Register themselves in `/docs/FUNCTION_INDEX.md` and update `/docs/WCTRA_context.md` as needed.
+
+## Example: Creating a New Agent
+
+1. Create `vectors/vectorNNN_newagent.py` with `run()` function and docstring explaining the logic.
+2. Add entry to this file, noting module, I/O, dependencies.
+3. Update manifest and function index.
+
+## Agent Collaboration
+
+- Agents communicate via shared events or files in `/shared/` or via direct function calls.
+- OverlayManagerAgent listens for EntropyAgent state before updating UI.
+- AntiBanAgent can pause all other agents during system event triggers.
 ## Project Overview
 Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Raspberry Pi.
 
@@ -33,7 +64,7 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 - Comment `/rebase` or add the `rebase` label on a pull request to trigger the *auto_rebase* workflow. This rebases the branch onto `main`, removes the label, runs sanitizers and tests, and merges if labeled `automerge`.
 
 ## Documentation Updates
-- Whenever code changes require docs, update `README.md` and `full_chat_log.md`
+- Whenever code changes require docs, update `README.md` and `full_chat_log.md` or create new files for reference 
 
 ## Workflow Rules
 1. Sanitize changes
@@ -46,7 +77,7 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 - Use structured logs and docstrings for all modules
 
 ## Security Mindset
-Treat the project as an adversarial AI/anti-cheat system with RL adaptation. Maintain high standards for security and defensive programming.
+Treat the project as an adversarial AI/anti-cheat system with RL adaptation. Maintain high standards for security and defensive programming and active testing and emhace development 
 
 ## Rebase Automation
 - Execute `./auto_rebase_allow.sh` in Termux when the feature branch falls behind
