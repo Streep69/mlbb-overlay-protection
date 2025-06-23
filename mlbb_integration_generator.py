@@ -29,8 +29,15 @@ subprocess.run([
 
 if DISCORD_WEBHOOK_URL:
     import requests
-    requests.post(DISCORD_WEBHOOK_URL, json={
-        'content': f"Codex MLBB overlay updated at {datetime.utcnow().isoformat()} UTC"
-    })
+    from urllib.parse import urlparse
+    
+    # Validate DISCORD_WEBHOOK_URL
+    parsed_url = urlparse(DISCORD_WEBHOOK_URL)
+    if parsed_url.scheme in ["http", "https"] and parsed_url.netloc.endswith("discord.com"):
+        requests.post(DISCORD_WEBHOOK_URL, json={
+            'content': f"Codex MLBB overlay updated at {datetime.utcnow().isoformat()} UTC"
+        })
+    else:
+        print("Invalid DISCORD_WEBHOOK_URL. Ensure it points to a trusted domain.")
 
 print('Done. Review changes and commit.')
