@@ -18,3 +18,4 @@ Added one_click_analyse script for automated Codex merges.
 Sanitized scripts and docs to remove non-ASCII characters.
 Added vector151 overlay entropy manager and documented new module.
 Added vector315 overlay load test and documentation.
+Implemented overlay intelligence, tapbot, and map pathfinder modules.

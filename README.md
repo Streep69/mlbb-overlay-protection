@@ -23,6 +23,9 @@ Modules `vector001`-`vector163` implement detection vectors. Example advanced mo
 - `vector149` - Tkinter security dashboard with a REST endpoint.
 - `vector150` - IsolationForest anomaly detector using sandbox session data.
 - `vector151` - Overlay entropy manager for randomized UI positions.
+- `vector152` - Overlay intelligence detecting position shifts.
+- `vector153` - Tapbot generating human-like tap sequences.
+- `vector154` - Map pathfinder for navigation analysis.
 - `vector315` - Overlay load test harness measuring update performance.
 
 See `docs/FUNCTION_INDEX.md` for an index of additional modules.
