@@ -10,7 +10,10 @@ import os
 import json
 from pathlib import Path
 
-from github import Github, BadCredentialsException, GithubException
+
+from github import Github, BadCredentialsException, GithubExcept
+from github import Github, BadCredentialsException
+
 
 
 def categorize_repo(name: str, description: str = "", language: str | None = None) -> str:
@@ -64,6 +67,7 @@ def run() -> None:
 
     # 4. Search GitHub and update index
     new_count = 0
+    3bef1i-codex/develop-and-document-modular-agents-for-akademie-system
     try:
         repos = gh.search_repositories(query=query, sort="stars", order="desc")
     except GithubException as exc:  # network or auth errors
@@ -71,6 +75,9 @@ def run() -> None:
         return
 
     for repo in repos:
+
+    for repo in gh.search_repositories(query=query, sort="stars", order="desc"):
+
         name = repo.full_name
         category = categorize_repo(name, repo.description or "", repo.language)
         entry = {
@@ -84,9 +91,13 @@ def run() -> None:
         if name not in existing:
             existing[name] = entry
             new_count += 1
+ 3bef1i-codex/develop-and-document-modular-agents-for-akade
         elif "category" not in existing[name]:
             existing[name]["category"] = category
 
+        else:
+            if "category" not in existing[name]:
+                existing[name
     # 5. Write back updated mlbb_repos.json
     with index_path.open("w", encoding="utf-8") as f:
         json.dump(list(existing.values()), f, indent=2)
