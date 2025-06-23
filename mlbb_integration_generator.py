@@ -33,7 +33,7 @@ if DISCORD_WEBHOOK_URL:
     
     # Validate DISCORD_WEBHOOK_URL
     parsed_url = urlparse(DISCORD_WEBHOOK_URL)
-    if parsed_url.scheme in ["http", "https"] and parsed_url.netloc.endswith("discord.com"):
+    if parsed_url.scheme in ["http", "https"] and parsed_url.netloc and (parsed_url.netloc == "discord.com" or parsed_url.netloc.endswith(".discord.com")):
         requests.post(DISCORD_WEBHOOK_URL, json={
             'content': f"Codex MLBB overlay updated at {datetime.utcnow().isoformat()} UTC"
         })
