@@ -11,7 +11,7 @@ def audit_log(event):
         f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {event}\n")
 
 class LootPredictVector:
-    def __init__(self, overlay_api, manifest="vector_manifest.json"):
+    def __init__(self, overlay_api, manifest="vector_manifest.json") -> None:
         self.name = "vector311_loot_predict"
         self.overlay_api = overlay_api
         self.manifest = manifest
@@ -24,7 +24,7 @@ class LootPredictVector:
         audit_log(f"Predicted loot: {loot}")
         return loot
 
-    def run(self, frame_stream):
+    def run(self, frame_stream) -> None:
         audit_log("LootPredict started.")
         try:
             for frame in frame_stream:
@@ -35,3 +35,20 @@ class LootPredictVector:
         except KeyboardInterrupt:
             self.overlay_api.clear()
             audit_log("LootPredict stopped.")
+
+
+class DummyOverlayAPI:
+    def draw_icon(self, x, y, icon="chest", alpha=0.7) -> None:
+        del x, y, icon, alpha
+
+    def clear(self) -> None:
+        pass
+
+
+def run() -> None:
+    vector = LootPredictVector(DummyOverlayAPI())
+    vector.run([None])
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()

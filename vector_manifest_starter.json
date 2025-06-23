@@ -41,6 +41,102 @@
       "type": "anti-detect",
       "hash": "PLACEHOLDER",
       "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector003_esp.py",
+      "type": "overlay",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector020_auto_combo.py",
+      "type": "automation",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector021_screenshot_blocker.py",
+      "type": "anti-detect",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector030_injector.py",
+      "type": "utility",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector040_log_cleaner.py",
+      "type": "anti-detect",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector050_obfuscator.py",
+      "type": "anti-detect",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector060_api_proxy.py",
+      "type": "utility",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector070_entropy_rotator.py",
+      "type": "entropy",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector080_overlay_spoofer.py",
+      "type": "anti-detect",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector090_session_spoofer.py",
+      "type": "anti-detect",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector316_session_obfuscator.py",
+      "type": "anti-detect",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector317_overlay_intelligence.py",
+      "type": "overlay",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector318_entropy_manager.py",
+      "type": "entropy",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector319_tapbot_gesture.py",
+      "type": "automation",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector320_map_intelligence.py",
+      "type": "overlay",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector/vector055.py",
+      "type": "automation",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
     }
   ],
   "scripts": [

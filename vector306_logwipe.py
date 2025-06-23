@@ -20,7 +20,7 @@ class LogWipeVector:
             ]
         self.log_paths = log_paths
 
-    def shred(self, path):
+    def shred(self, path: str) -> None:
         try:
             if os.path.exists(path):
                 with open(path, "r+b") as f:
@@ -34,8 +34,16 @@ class LogWipeVector:
         except Exception as e:
             audit_log(f"Error wiping {path}: {e}")
 
-    def run(self):
+    def run(self) -> None:
         audit_log("LogWipe started.")
         for path in self.log_paths:
             self.shred(path)
         audit_log("LogWipe complete.")
+
+
+def run() -> None:
+    LogWipeVector().run()
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()
