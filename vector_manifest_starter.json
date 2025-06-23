@@ -11,6 +11,36 @@
       "type": "entropy",
       "hash": "PLACEHOLDER",
       "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector001_maphack.py",
+      "type": "overlay",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector002_overlay.py",
+      "type": "overlay",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector004_tapbot.py",
+      "type": "automation",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector005_entropy.py",
+      "type": "entropy",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector010_antiban_overlay.py",
+      "type": "anti-detect",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
     }
   ],
   "scripts": [
