@@ -75,6 +75,11 @@
     {
       "name": "vector/vector055.py",
       "type": "automation",
+    }
+    ,{
+      "name": "vector316_session_obfuscator.py",
+      "type": "anti-detect",
+
       "hash": "PLACEHOLDER",
       "last_validated": "2025-06-24"
     }
