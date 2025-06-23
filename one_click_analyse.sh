@@ -3,7 +3,7 @@
 set -Eeuo pipefail
 IFS=$'\n\t'
 
-: "${GH_PAT:?GH_PAT secret missing (Settings ➜ Secrets ➜ Actions ➜ GH_PAT)}"
+: "${GH_PAT:?GH_PAT secret missing (Settings -> Secrets -> Actions -> GH_PAT)}"
 
 git config --global user.name  "github-actions[bot]"
 git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"

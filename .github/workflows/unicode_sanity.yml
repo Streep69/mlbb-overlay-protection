@@ -16,7 +16,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          echo "✔ Git identity set to $(git config --global user.name) <$(git config --global user.email)>"
+          echo "Git identity set to $(git config --global user.name) <$(git config --global user.email)>"
       - name: Detect non-ASCII characters
         run: |
           if git diff origin/main...HEAD | grep -P '[^\x00-\x7F]'; then

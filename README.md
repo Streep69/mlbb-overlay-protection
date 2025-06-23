@@ -18,10 +18,10 @@ bash termux/setup_termux.sh
 ```
 
 ## Vector Modules
-Modules `vector001`–`vector163` implement detection vectors. Example advanced modules include:
+Modules `vector001`-`vector163` implement detection vectors. Example advanced modules include:
 
-- `vector149` – Tkinter security dashboard with a REST endpoint.
-- `vector150` – IsolationForest anomaly detector using sandbox session data.
+- `vector149` - Tkinter security dashboard with a REST endpoint.
+- `vector150` - IsolationForest anomaly detector using sandbox session data.
 
 ## Setup
 Use **Python 3.12** or newer. Create a virtual environment and install the dependencies listed in `requirements.txt`:
@@ -42,7 +42,7 @@ pytest -q
 ```
 
 ## Continuous Integration
-> ⚠ We enforce ASCII-only content. CI workflows use a Personal Access Token (`GH_PAT`) with `repo` scope. Checkouts use `persist-credentials: false` and the PAT to push back to protected branches. Pull requests labeled `automerge` merge automatically when CI passes. Before pushing, the workflow checks if the branch is synced with `main` and fails if conflicts occur.
+**Note:** We enforce ASCII-only content. CI workflows use a Personal Access Token (`GH_PAT`) with `repo` scope. Checkouts use `persist-credentials: false` and the PAT to push back to protected branches. Pull requests labeled `automerge` merge automatically when CI passes. Before pushing, the workflow checks if the branch is synced with `main` and fails if conflicts occur.
 
 - Use `./gh_auth_login.sh` to install GitHub CLI, authenticate with `GH_PAT`, and verify authentication.
 - Run `./codex_cli_setup.sh` to configure git identity and fetch all branches.
