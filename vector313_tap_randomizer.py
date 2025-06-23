@@ -10,10 +10,10 @@ def audit_log(event):
         f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {event}\n")
 
 class TapRandomizerVector:
-    def __init__(self, tap_api):
+    def __init__(self, tap_api) -> None:
         self.tap_api = tap_api
 
-    def run(self, reps=12):
+    def run(self, reps: int = 12) -> None:
         audit_log("TapRandomizer started.")
         for _ in range(reps):
             x = random.randint(200, 1100)
@@ -23,3 +23,16 @@ class TapRandomizerVector:
             audit_log(f"Random tap at {x},{y}, {duration:.2f}s")
             time.sleep(random.uniform(0.08, 0.22))
         audit_log("TapRandomizer finished.")
+
+
+class DummyTapAPI:
+    def tap(self, x, y, duration=0.1) -> None:
+        del x, y, duration
+
+
+def run() -> None:
+    TapRandomizerVector(DummyTapAPI()).run(reps=1)
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()

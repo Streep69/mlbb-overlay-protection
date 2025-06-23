@@ -11,7 +11,7 @@ def audit_log(event):
         f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {event}\n")
 
 class SessionCleanerVector:
-    def __init__(self, overlay_api=None, tapbot_api=None, log_paths=None):
+    def __init__(self, overlay_api=None, tapbot_api=None, log_paths=None) -> None:
         self.overlay_api = overlay_api
         self.tapbot_api = tapbot_api
         if log_paths is None:
@@ -21,7 +21,7 @@ class SessionCleanerVector:
             ]
         self.log_paths = log_paths
 
-    def clean(self):
+    def clean(self) -> None:
         audit_log("SessionCleaner started.")
         if self.overlay_api: self.overlay_api.clear()
         if self.tapbot_api: self.tapbot_api.terminate()
@@ -31,5 +31,21 @@ class SessionCleanerVector:
                 audit_log(f"Deleted {path}")
         audit_log("SessionCleaner complete.")
 
-    def run(self):
+    def run(self) -> None:
         self.clean()
+
+
+class DummyOverlayAPI:
+    def clear(self) -> None: pass
+
+
+class DummyTapAPI:
+    def terminate(self) -> None: pass
+
+
+def run() -> None:
+    SessionCleanerVector(DummyOverlayAPI(), DummyTapAPI()).run()
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()
