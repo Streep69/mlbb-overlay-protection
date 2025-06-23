@@ -15,7 +15,7 @@ This document lists the primary automation agents used in the project.
 | ObfuscatorAgent      | `vectors/vector050_obfuscator.py` | Rename files for stealth                   | File list     | New paths     |
 | APIProxyAgent        | `vectors/vector060_api_proxy.py` | Proxy and log API calls                    | Requests      | Responses     |
 | EntropyRotatorAgent  | `vectors/vector070_entropy_rotator.py` | Rotate overlay seeds                      | None          | Seed list     |
-| OverlaySpooferAgent  | `vectors/vector080_overlay_spoofer.py` | Spoof overlay window names                | Name opt      | New name      |
+| OverlaySpooferAgent  | `vectorvector080_overlay_spoofer.py` | Spoof overlay window names                | Name opt      | New name      |
 | SessionSpooferAgent  | `vectors/vector090_session_spoofer.py` | Generate fake session IDs                 | None          | Session ID    |
 | EntropyAgent         | `vectors/vector005_entropy.py` | Rotate random seeds for other modules       | None          | New entropy   |
 | AntiBanOverlayAgent  | `vectors/vector010_antiban_overlay.py` | Hide overlay on screenshot events         | Events        | Clean state   |
@@ -29,5 +29,6 @@ This document lists the primary automation agents used in the project.
 | EntropyManagerAgent | `vector318_entropy_manager.py` | Rotate seeds for overlay and tap modules | None | Seed list |
 | TapbotGestureAgent | `vector319_tapbot_gesture.py` | Simulate taps and swipes with entropy | Gesture plan | Touch events |
 | MapIntelligenceAgent | `vector320_map_intelligence.py` | Build heatmap of enemy sightings | Frame stream | Heatmap data |
+| RepoReportAgent | `vector321_repo_report.py` | Summarize repo categories from `mlbb_repos.json` | JSON index | Category counts |
 | 2o37x5-codex/develop-and-document-modular-agents-for-akademie-system
 
