@@ -9,3 +9,5 @@ This document lists the primary automation agents used in the project.
 | TapBotAgent          | `vectors/vector004_tapbot.py`  | Send randomized tap commands                | None          | Touch events  |
 | EntropyAgent         | `vectors/vector005_entropy.py` | Rotate random seeds for other modules       | None          | New entropy   |
 | AntiBanOverlayAgent  | `vectors/vector010_antiban_overlay.py` | Hide overlay on screenshot events         | Events        | Clean state   |
+| LoadTestAgent        | `vector315_overlay_loadtest.py`        | Overlay stress/load cycles                | cycles config | Remaining handles |
+| SessionObfuscatorAgent | `vector316_session_obfuscator.py` | Randomize session IDs and overlay names | None | New session ID |
