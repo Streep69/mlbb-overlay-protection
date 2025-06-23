@@ -32,31 +32,18 @@ if DISCORD_WEBHOOK_URL:
     from urllib.parse import urlparse
     import socket
     
+    ALLOWED_WEBHOOK_PREFIXES = [
+        "https://discord.com/api/webhooks/"
+    ]
+
     def is_valid_url(url):
         try:
             parsed_url = urlparse(url)
-            if parsed_url.scheme not in ["http", "https"]:
-                return False
-            if not parsed_url.netloc:
-                return False
-            if not (parsed_url.netloc == "discord.com" or parsed_url.netloc.endswith(".discord.com")):
-                return False
-            # Resolve hostname to IP and check if it's public
-            ip = socket.gethostbyname(parsed_url.hostname)
-            private_ranges = [
-                ("10.0.0.0", "10.255.255.255"),
-                ("172.16.0.0", "172.31.255.255"),
-                ("192.168.0.0", "192.168.255.255"),
-                ("127.0.0.0", "127.255.255.255"),
-                ("169.254.0.0", "169.254.255.255"),
-                ("::1", "::1"),  # IPv6 localhost
-                ("fc00::", "fdff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"),  # IPv6 private
-            ]
-            ip_addr = socket.inet_aton(ip)
-            for start, end in private_ranges:
-                if socket.inet_aton(start) <= ip_addr <= socket.inet_aton(end):
-                    return False
-            return True
+            # Ensure the URL starts with an allowed prefix
+            for prefix in ALLOWED_WEBHOOK_PREFIXES:
+                if url.startswith(prefix):
+                    return True
+            return False
         except Exception:
             return False
     
