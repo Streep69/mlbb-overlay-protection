@@ -11,11 +11,11 @@ def audit_log(event):
         f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {event}\n")
 
 class OverlayRelayVector:
-    def __init__(self, pi_api, termux_api):
+    def __init__(self, pi_api, termux_api) -> None:
         self.pi_api = pi_api
         self.termux_api = termux_api
 
-    def run(self):
+    def run(self) -> None:
         audit_log("OverlayRelay started.")
         while True:
             overlay_cmd = self.pi_api.get_overlay_cmd()
@@ -25,3 +25,27 @@ class OverlayRelayVector:
                 time.sleep(1)
             else:
                 time.sleep(0.2)
+
+
+class DummyPiAPI:
+    def __init__(self) -> None:
+        self.count = 0
+
+    def get_overlay_cmd(self):
+        self.count += 1
+        if self.count > 1:
+            raise KeyboardInterrupt
+        return {"hide": False}
+
+
+class DummyTermuxAPI:
+    def send_overlay_cmd(self, cmd) -> None:
+        del cmd
+
+
+def run() -> None:
+    OverlayRelayVector(DummyPiAPI(), DummyTermuxAPI()).run()
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()

@@ -14,7 +14,7 @@ def random_delay(base=0.12, jitter=0.07):
     time.sleep(base + random.uniform(0, jitter))
 
 class MaphackVector:
-    def __init__(self, overlay_api, manifest="vector_manifest.json"):
+    def __init__(self, overlay_api, manifest="vector_manifest.json") -> None:
         self.name = "vector301_maphack"
         self.overlay_api = overlay_api
         self.manifest = manifest
@@ -38,7 +38,7 @@ class MaphackVector:
         self.overlay_api.clear()
         audit_log("Overlay cleaned.")
 
-    def run(self, frame_stream):
+    def run(self, frame_stream) -> None:
         audit_log("Maphack ESP started.")
         try:
             for frame in frame_stream:
@@ -48,3 +48,22 @@ class MaphackVector:
         except KeyboardInterrupt:
             self.clean_overlay()
             audit_log("Maphack ESP stopped.")
+
+
+class DummyOverlayAPI:
+    def draw_rect(self, x, y, w=36, h=36, color="red", alpha=0.55) -> None:
+        del x, y, w, h, color, alpha
+
+    def clear(self) -> None:
+        pass
+
+
+def run() -> None:
+    """Entry point used by tests."""
+    api = DummyOverlayAPI()
+    stream = [None] * 3
+    MaphackVector(api).run(stream)
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()
