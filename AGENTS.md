@@ -10,8 +10,24 @@ This project’s automation and vector logic are managed by modular agents.
 | MapHackAgent           | vectors/vector001_maphack.py   | Reveals minimap info          | Raw map memory          | Entity list    |               |
 | EntropyAgent           | vectors/vector005_entropy.py   | Adds entropy, session random  | Overlay state           | New entropy    | OverlayManager|
 | AntiBanAgent           | vectors/vector010_antiban_overlay.py | Hide overlay/screens, log clean | System events         | Clean state    |               |
+| EventTriggerAgent      | vector/vector055.py            | Detect in-game trigger events   | Event list              | Matched events |               |
 | TapBotAgent            | vectors/vector004_tapbot.py    | Simulates human tap entropy   | Tap command             | Touch event    | EntropyAgent  |
+| ESPAgent               | vectors/vector003_esp.py       | Draw entity boxes on overlay  | Frame stream            | Box count      | OverlayManager |
+| AutoComboAgent         | vectors/vector020_auto_combo.py | Execute skill combos          | Combo list              | Skill log      | TapBotAgent   |
+| ScreenshotBlockerAgent | vectors/vector021_screenshot_blocker.py | Hide overlay during screenshots | Events                  | Blocks         | OverlayManager |
+| InjectorAgent          | vectors/vector030_injector.py  | Dynamically load modules      | Module list            | Loaded count   |               |
+| LogCleanerAgent        | vectors/vector040_log_cleaner.py | Remove overlay/audit logs     | Directory              | Files cleaned  |               |
+| ObfuscatorAgent        | vectors/vector050_obfuscator.py | Rename files for stealth      | File list              | New paths      |               |
+| APIProxyAgent          | vectors/vector060_api_proxy.py | Proxy and log API calls       | Requests              | Responses      |               |
+| EntropyRotatorAgent    | vectors/vector070_entropy_rotator.py | Rotate overlay seeds        | None                   | Seed list      | EntropyAgent  |
+| OverlaySpooferAgent    | vectors/vector080_overlay_spoofer.py | Spoof overlay window names  | Name opt               | New name       | OverlayManager |
+| SessionSpooferAgent    | vectors/vector090_session_spoofer.py | Generate fake session IDs   | None                   | Session ID     |               |
 | LoadTestAgent         | vector315_overlay_loadtest.py   | Overlay stress/load test cycles | cycles config        | Remaining handles | OverlayManager |
+| SessionObfuscatorAgent| vector316_session_obfuscator.py | Randomize session IDs and overlay names | None | New session ID | OverlayManager |
+| OverlayIntelAgent     | vector317_overlay_intelligence.py | Monitor overlay FPS and memory usage | None | Metric list    | OverlayManager |
+| EntropyManagerAgent   | vector318_entropy_manager.py | Rotate seeds for overlay and tap modules | None | Seed list      |               |
+| TapbotGestureAgent    | vector319_tapbot_gesture.py | Simulate taps and swipes with entropy | Gesture plan | Touch events   | EntropyManager |
+| MapIntelligenceAgent  | vector320_map_intelligence.py | Build heatmap of enemy sightings | Frame stream | Heatmap data   | OverlayManager |
 
 ## Extension/Onboarding Instructions
 
