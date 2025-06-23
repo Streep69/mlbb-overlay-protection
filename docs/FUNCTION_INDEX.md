@@ -20,3 +20,11 @@ Every function in all vectors/scripts, indexed for Codex/LLM context and AI onbo
 - `vector004_tapbot.py` – `TapBotAgent.run(reps)` sends randomized tap events.
 - `vector005_entropy.py` – `EntropyAgent.run(cycles)` rotates random seeds for modules.
 - `vector010_antiban_overlay.py` – `AntiBanOverlayAgent.run(event_stream)` hides overlay on screenshots.
+- `vector315_overlay_loadtest.py` – `LoadTestAgent.run(cycles, per_cycle)` stress tests overlay spawning.
+- `vector316_session_obfuscator.py` – `SessionObfuscatorAgent.run()` rotates overlay handles and session IDs.
+- `vector317_overlay_intelligence.py` – `OverlayIntelVector.run(iterations)` collects overlay FPS and memory metrics.
+- `vector318_entropy_manager.py` – `EntropyManagerVector.run(cycles)` rotates global seeds.
+- `vector319_tapbot_gesture.py` – `TapbotGestureVector.run(actions)` performs taps and swipes.
+- `vector320_map_intelligence.py` – `MapIntelligenceVector.run(frame_stream, iterations)` builds enemy heatmap.
+- `vector055.py` – `run(events)` scans event sequences for trigger flags and logs matches.
+- `mlbb_repo_fetcher.py` – `categorize_repo(name, description, language)` assigns MLBB repositories to categories for integration.
