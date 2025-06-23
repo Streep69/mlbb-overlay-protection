@@ -18,6 +18,7 @@ This project’s automation and vector logic are managed by modular agents.
 | TapbotGestureAgent    | vector319_tapbot_gesture.py | Simulate taps and swipes with entropy | Gesture plan | Touch events   | EntropyManager |
 | MapIntelligenceAgent  | vector320_map_intelligence.py | Build heatmap of enemy sightings | Frame stream | Heatmap data   | OverlayManager |
 
+
 ## Extension/Onboarding Instructions
 
 - **All new agents must:**
