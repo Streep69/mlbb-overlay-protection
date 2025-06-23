@@ -40,3 +40,15 @@ Every function in all vectors/scripts, indexed for Codex/LLM context and AI onbo
 - `vector055.py` – `run(events)` scans event sequences for trigger flags and logs matches.
 - `mlbb_repo_fetcher.py` – `categorize_repo(name, description, language)` assigns MLBB repositories to categories for integration.
 - `mlbb_repo_fetcher.py` – `run()` fetches repository info and scaffolds integration stubs.
+< 2o37x5-codex/develop-and-document-modular-agents-for-akademie-system
+- `vector055.py` – `run(events)` scans event sequences for trigger flags and logs matches.
+- `mlbb_repo_fetcher.py` – `categorize_repo(name, description, language)` assigns MLBB repositories to categories for integration.
+- `mlbb_repo_fetcher.py` – `run()` fetches repository info and scaffolds integration stubs.
+<  qzvjrp-codex/develop-and-document-modular-agents-for-akademie-system
+- `vector055.py` – `run(events)` scans event sequences for trigger flags and logs matches.
+- `mlbb_repo_fetcher.py` – `categorize_repo(name, description, language)` assigns MLBB repositories to categories for integration.
+- `mlbb_repo_fetcher.py` – `run()` fetches repository info and scaffolds integration stubs.
+-  3bef1i-codex/develop-and-document-modular-agents-for-akademie-system
+-  codex/develop-and-document-modular-agents-for-akademie-system
+- `vector055.py` – `run(events)` scans event sequences for trigger flags and logs matches.
+- `mlbb_repo_fetcher.py` – `categorize_repo(name, description, language)` assigns MLBB repositories to categories for integration.

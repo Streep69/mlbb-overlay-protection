@@ -10,8 +10,17 @@ import os
 import json
 from pathlib import Path
 
+ 5owsy6-codex/develop-and-document-modular-agents-for-akademie-system
 from github import Github, BadCredentialsException, GithubException
 
+ 2o37x5-codex/develop-and-document-modular-agents-for-akademie-system
+from github import Github, BadCredentialsException, GithubException
+
+qzvjrp-codex/develop-and-document-modular-agents-for-akademie-system
+from github import Github, BadCredentialsException, GithubException
+
+from github import Github, BadCredentialsException, GithubExcept
+from github import Github, BadCredentialsException
 
 def categorize_repo(name: str, description: str = "", language: str | None = None) -> str:
     """Return a simple category based on repo metadata."""
@@ -63,7 +72,13 @@ def run() -> None:
             )
 
     # 4. Search GitHub and update index
-    new_count = 0
+    new_count = 
+    5owsy6-codex/develop-and-document-modular-agents-for-akademie-system
+
+ 2o37x5-codex/develop-and-document-modular-agents-for-akademie-system
+ qzvjrp-codex/develop-and-document-modular-agents-for-akademie-system
+
+    3bef1i-codex/develop-and-document-modular-agents-for-akademie-system
     try:
         repos = gh.search_repositories(query=query, sort="stars", order="desc")
     except GithubException as exc:  # network or auth errors
@@ -71,6 +86,13 @@ def run() -> None:
         return
 
     for repo in repos:
+ 5owsy6-codex/develop-and-document-modular-agents-for-akademie-system
+ 2o37x5-codex/develop-and-document-modular-agents-for-akademie-system
+ qzvjrp-codex/develop-and-document-modular-agents-for-akademie-system
+
+
+    for repo in gh.search_repositories(query=query, sort="stars", order="desc"):
+    
         name = repo.full_name
         category = categorize_repo(name, repo.description or "", repo.language)
         entry = {
@@ -84,6 +106,7 @@ def run() -> None:
         if name not in existing:
             existing[name] = entry
             new_count += 1
+ 5owsy6-codex/develop-and-document-modular-agents-for-akademie-system
         elif "category" not in existing[name]:
             existing[name]["category"] = category
 
@@ -96,7 +119,45 @@ def run() -> None:
     # 6. Scaffold integration stubs
     stub_dir = Path("vector/integrations")
     stub_dir.mkdir(parents=True, exist_ok=True)
+    
+    2o37x5-codex/develop-and-document-modular-agents-for-akademie-system
+        elif "category" not in existing[name]:
+            existing[name]["category"] = category
 
+    # 5. Write back updated mlbb_repos.json
+    with index_path.open("w", encoding="utf-8") as f:
+        json.dump(list(existing.values()), f, indent=2)
+
+    print(f"Index updated: {new_count} new repositories added")
+
+    # 6. Scaffold integration stubs
+    stub_dir = Path("vector/integrations")
+    stub_dir.mkdir(parents=True, exist_ok=True)
+    
+ qzvjrp-codex/develop-and-document-modular-agents-for-akademie-system
+        elif "category" not in existing[name]:
+            existing[name]["category"] = category
+
+
+ 3bef1i-codex/develop-and-document-modular-agents-for-akade
+        elif "category" not in existing[name]:
+            existing[name]["category"] = category
+
+        else:
+            if "category" not in existing[name]:
+                existing[name
+
+    # 5. Write back updated mlbb_repos.json
+    with index_path.open("w", encoding="utf-8") as f:
+        json.dump(list(existing.values()), f, indent=2)
+
+    print(f"Index updated: {new_count} new repositories added")
+
+    # 6. Scaffold integration stubs
+    stub_dir = Path("vector/integrations")
+    stub_dir.mkdir(parents=True, exist_ok=True)
+
+    main
     for full_name in existing:
         module_name = full_name.replace("/", "_")
         stub_file = stub_dir / f"{module_name}_integration.py"
