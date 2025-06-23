@@ -72,6 +72,12 @@
       "hash": "PLACEHOLDER",
       "last_validated": "2025-06-24"
     }
+    ,{
+      "name": "vector316_session_obfuscator.py",
+      "type": "anti-detect",
+      "hash": "PLACEHOLDER",
+      "last_validated": "2025-06-24"
+    }
   ],
   "scripts": [
     {
