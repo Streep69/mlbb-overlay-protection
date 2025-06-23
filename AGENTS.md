@@ -15,7 +15,7 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 - `docs/` - documentation assets
 
 ## Agent Role Instructions
-- Generate `vector001`-`vector163` modules when requested
+- Generate `vector001`-`vector163` modules and extend beyond when requested
 - Sanitize Unicode and auto-fix detectable errors
 - Run tests before committing and commit only clean code
 
@@ -37,7 +37,7 @@ Non-root Mobile Legends: Bang Bang overlay cheats for S23 Ultra streamed to Rasp
 - Comment `/rebase` or add the `rebase` label on a pull request to trigger the auto_rebase workflow. This rebases the branch onto `main`, removes the label, runs sanitizers and tests, and merges if labeled `automerge`.
 
 ## Documentation Updates
-- Whenever code changes require docs, update `README.md` and `full_chat_log.md`
+- Whenever code changes require docs, update `README.md`, `full_chat_log.md`, and files in `docs/` such as `FUNCTION_INDEX.md`.
 
 ## Workflow Rules
 1. Sanitize changes

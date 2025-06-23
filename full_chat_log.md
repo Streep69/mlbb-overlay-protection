@@ -17,3 +17,4 @@ Added Termux setup script for Android environments.
 Added one_click_analyse script for automated Codex merges.
 Sanitized scripts and docs to remove non-ASCII characters.
 Added vector151 overlay entropy manager and documented new module.
+Added vector315 overlay load test and documentation.

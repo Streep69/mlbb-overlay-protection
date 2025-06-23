@@ -23,6 +23,9 @@ Modules `vector001`-`vector163` implement detection vectors. Example advanced mo
 - `vector149` - Tkinter security dashboard with a REST endpoint.
 - `vector150` - IsolationForest anomaly detector using sandbox session data.
 - `vector151` - Overlay entropy manager for randomized UI positions.
+- `vector315` - Overlay load test harness measuring update performance.
+
+See `docs/FUNCTION_INDEX.md` for an index of additional modules.
 
 ## Setup
 Use **Python 3.12** or newer. Create a virtual environment and install the dependencies listed in `requirements.txt`:
