@@ -11,6 +11,36 @@
       "type": "entropy",
       "hash": "PLACEHOLDER",
       "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector001_maphack.py",
+      "type": "overlay",
+      "hash": "bad8361619cb4e81c612617263c21a46b015d8534d89eef843b35615bc9b0191",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector002_overlay.py",
+      "type": "overlay",
+      "hash": "60ab5f70fb79695be6bd240864084314b693f60494faeb4d906e12e526d33cf0",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector004_tapbot.py",
+      "type": "automation",
+      "hash": "e32b74873b87325da314df9f3233d5c029c35fcbf8bad88088b39cf09c7d34b2",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector005_entropy.py",
+      "type": "entropy",
+      "hash": "280664585c97ee8e5971c33395e6aa30da536a9d0132d48da836a0405d4df142",
+      "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector010_antiban_overlay.py",
+      "type": "anti-detect",
+      "hash": "c6cd8b036c7b39effd318317be1ed92ffb6c0020372362e29edfafaca9f933d8",
+      "last_validated": "2025-06-24"
     }
   ],
   "scripts": [
