@@ -11,7 +11,7 @@ def audit_log(event):
         f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {event}\n")
 
 class SkillPredictVector:
-    def __init__(self, overlay_api, manifest="vector_manifest.json"):
+    def __init__(self, overlay_api, manifest="vector_manifest.json") -> None:
         self.name = "vector310_skill_predict"
         self.overlay_api = overlay_api
         self.manifest = manifest
@@ -24,7 +24,7 @@ class SkillPredictVector:
         audit_log(f"Safe zone at ({safe_x}, {safe_y}), r={radius}")
         return safe_x, safe_y, radius
 
-    def run(self, frame_stream):
+    def run(self, frame_stream) -> None:
         audit_log("SkillPredict started.")
         try:
             for frame in frame_stream:
@@ -34,3 +34,20 @@ class SkillPredictVector:
         except KeyboardInterrupt:
             self.overlay_api.clear()
             audit_log("SkillPredict stopped.")
+
+
+class DummyOverlayAPI:
+    def draw_circle(self, x, y, r, color, alpha) -> None:
+        del x, y, r, color, alpha
+
+    def clear(self) -> None:
+        pass
+
+
+def run() -> None:
+    api = DummyOverlayAPI()
+    SkillPredictVector(api).run(frame_stream=[None])
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()

@@ -18,7 +18,7 @@ def random_delay(base=0.09, jitter=0.07):
     time.sleep(base + random.uniform(0, jitter))
 
 class ChestESPVector:
-    def __init__(self, overlay_api, manifest="vector_manifest.json"):
+    def __init__(self, overlay_api, manifest="vector_manifest.json") -> None:
         self.name = "vector311_chest_esp"
         self.overlay_api = overlay_api
         self.manifest = manifest
@@ -33,18 +33,18 @@ class ChestESPVector:
         audit_log(f"Detected {len(chest_coords)} chest(s): {chest_coords}")
         return chest_coords
 
-    def render_overlay(self, chest_coords):
+    def render_overlay(self, chest_coords) -> None:
         # Anti-detection: Randomize draw order/timing
         for x, y in chest_coords:
             self.overlay_api.draw_circle(x, y, r=28, color='gold', alpha=random.uniform(0.5, 0.75))
             audit_log(f"Overlay circle drawn at ({x},{y})")
             random_delay()
 
-    def clean_overlay(self):
+    def clean_overlay(self) -> None:
         self.overlay_api.clear()
         audit_log("Overlay cleaned (auto on session end)")
 
-    def run(self, frame_stream):
+    def run(self, frame_stream) -> None:
         audit_log("Chest ESP started.")
         try:
             for frame in frame_stream:
@@ -60,9 +60,11 @@ class DummyOverlayAPI:
     def draw_circle(self, x, y, r, color, alpha): pass
     def clear(self): pass
 
-if __name__ == "__main__":
-    overlay = DummyOverlayAPI()  # Replace with your actual overlay interface
+def run() -> None:
+    overlay = DummyOverlayAPI()
     vector = ChestESPVector(overlay)
-    # Simulate frame stream
-    fake_stream = [None] * 5
-    vector.run(fake_stream)
+    vector.run([None] * 1)
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()

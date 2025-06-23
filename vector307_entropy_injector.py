@@ -10,7 +10,7 @@ def audit_log(event):
         f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {event}\n")
 
 class EntropyInjectorVector:
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = "vector307_entropy_injector"
 
     def randomize_delay(self, base=0.09, jitter=0.09):
@@ -31,3 +31,11 @@ class EntropyInjectorVector:
             self.randomize_delay()
             self.randomize_input()
         audit_log("EntropyInjector complete.")
+
+
+def run() -> None:
+    EntropyInjectorVector().run(n=1)
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()

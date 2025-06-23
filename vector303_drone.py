@@ -11,12 +11,12 @@ def audit_log(event):
         f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {event}\n")
 
 class DroneVector:
-    def __init__(self, overlay_api, manifest="vector_manifest.json"):
+    def __init__(self, overlay_api, manifest="vector_manifest.json") -> None:
         self.name = "vector303_drone"
         self.overlay_api = overlay_api
         self.manifest = manifest
 
-    def run(self, frame_stream):
+    def run(self, frame_stream) -> None:
         audit_log("DroneView started.")
         try:
             for frame in frame_stream:
@@ -27,3 +27,18 @@ class DroneVector:
         except KeyboardInterrupt:
             self.overlay_api.set_zoom(1.0)
             audit_log("DroneView reset zoom.")
+
+
+class DummyOverlayAPI:
+    def set_zoom(self, level: float) -> None:
+        del level
+
+
+def run() -> None:
+    api = DummyOverlayAPI()
+    stream = [None] * 3
+    DroneVector(api).run(stream)
+
+
+if __name__ == "__main__":  # pragma: no cover
+    run()
