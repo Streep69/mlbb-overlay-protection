@@ -26,4 +26,6 @@ Every function in all vectors/scripts, indexed for Codex/LLM context and AI onbo
 - `vector318_entropy_manager.py` – `EntropyManagerVector.run(cycles)` rotates global seeds.
 - `vector319_tapbot_gesture.py` – `TapbotGestureVector.run(actions)` performs taps and swipes.
 - `vector320_map_intelligence.py` – `MapIntelligenceVector.run(frame_stream, iterations)` builds enemy heatmap.
+-  codex/develop-and-document-modular-agents-for-akademie-system
+- `vector055.py` – `run(events)` scans event sequences for trigger flags and logs matches.
 - `mlbb_repo_fetcher.py` – `categorize_repo(name, description, language)` assigns MLBB repositories to categories for integration.
