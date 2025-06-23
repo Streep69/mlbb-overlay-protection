@@ -22,3 +22,4 @@ Every function in all vectors/scripts, indexed for Codex/LLM context and AI onbo
 - `vector010_antiban_overlay.py` – `AntiBanOverlayAgent.run(event_stream)` hides overlay on screenshots.
 - `vector315_overlay_loadtest.py` – `LoadTestAgent.run(cycles, per_cycle)` stress tests overlay spawning.
 - `vector316_session_obfuscator.py` – `SessionObfuscatorAgent.run()` rotates overlay handles and session IDs.
+- `mlbb_repo_fetcher.py` – `categorize_repo(name, description, language)` assigns MLBB repositories to categories for integration.
