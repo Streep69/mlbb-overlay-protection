@@ -13,6 +13,11 @@ This project’s automation and vector logic are managed by modular agents.
 | TapBotAgent            | vectors/vector004_tapbot.py    | Simulates human tap entropy   | Tap command             | Touch event    | EntropyAgent  |
 | LoadTestAgent         | vector315_overlay_loadtest.py   | Overlay stress/load test cycles | cycles config        | Remaining handles | OverlayManager |
 | SessionObfuscatorAgent| vector316_session_obfuscator.py | Randomize session IDs and overlay names | None | New session ID | OverlayManager |
+| OverlayIntelAgent     | vector317_overlay_intelligence.py | Monitor overlay FPS and memory usage | None | Metric list    | OverlayManager |
+| EntropyManagerAgent   | vector318_entropy_manager.py | Rotate seeds for overlay and tap modules | None | Seed list      |               |
+| TapbotGestureAgent    | vector319_tapbot_gesture.py | Simulate taps and swipes with entropy | Gesture plan | Touch events   | EntropyManager |
+| MapIntelligenceAgent  | vector320_map_intelligence.py | Build heatmap of enemy sightings | Frame stream | Heatmap data   | OverlayManager |
+
 
 ## Extension/Onboarding Instructions
 
