@@ -9,5 +9,6 @@ This document lists the primary automation agents used in the project.
 | TapBotAgent          | `vectors/vector004_tapbot.py`  | Send jittered tap commands with optional paths | None          | Touch events  |
 | EntropyAgent         | `vectors/vector005_entropy.py` | Rotate PRNG seed and provide entropy delays | None          | New entropy   |
 | AntiBanOverlayAgent  | `vectors/vector010_antiban_overlay.py` | Hide overlay on screenshot events and clean logs | Events        | Clean state   |
+| LoadTestAgent        | `vector315_overlay_loadtest.py`        | Stress test overlay handle lifecycle            | Cycles config | Remaining handles |
 
 All agents record audit logs under `/test/` and offer `audit()` and `self_clean()` helpers for post-session review and cleanup.

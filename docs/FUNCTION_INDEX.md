@@ -20,3 +20,4 @@ Every function in all vectors/scripts, indexed for Codex/LLM context and AI onbo
 - `vector004_tapbot.py` - `TapBotAgent.run(reps, path)` sends jittered tap events. Provides `audit()` and `self_clean()`.
 - `vector005_entropy.py` - `EntropyAgent.run(cycles)` rotates seeds and returns entropy delays. Provides `audit()` and `self_clean()`.
 - `vector010_antiban_overlay.py` - `AntiBanOverlayAgent.run(event_stream)` hides overlays and cleans logs. Includes `audit()` and `self_clean()`.
+- `vector315_overlay_loadtest.py` - `run(cycles, per_cycle)` spawns and cleans overlay handles for stress testing. Includes `audit()` and `self_clean()`.

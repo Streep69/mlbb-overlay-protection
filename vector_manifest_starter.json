@@ -41,6 +41,12 @@
       "type": "anti-detect",
       "hash": "c6cd8b036c7b39effd318317be1ed92ffb6c0020372362e29edfafaca9f933d8",
       "last_validated": "2025-06-24"
+    },
+    {
+      "name": "vector315_overlay_loadtest.py",
+      "type": "test",
+      "hash": "d836f1aeff7e288ba72aad0f953cb03522288d3c592e5d3625f25f94d370a976",
+      "last_validated": "2025-06-24"
     }
   ],
   "scripts": [
