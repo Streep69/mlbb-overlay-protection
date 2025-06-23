@@ -29,5 +29,5 @@ This document lists the primary automation agents used in the project.
 | EntropyManagerAgent | `vector318_entropy_manager.py` | Rotate seeds for overlay and tap modules | None | Seed list |
 | TapbotGestureAgent | `vector319_tapbot_gesture.py` | Simulate taps and swipes with entropy | Gesture plan | Touch events |
 | MapIntelligenceAgent | `vector320_map_intelligence.py` | Build heatmap of enemy sightings | Frame stream | Heatmap data |
-| qzvjrp-codex/develop-and-document-modular-agents-for-akademie-system
+| 2o37x5-codex/develop-and-document-modular-agents-for-akademie-system
 
