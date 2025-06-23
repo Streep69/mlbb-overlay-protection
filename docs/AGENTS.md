@@ -15,6 +15,7 @@ This document lists the primary automation agents used in the project.
 | ObfuscatorAgent      | `vectors/vector050_obfuscator.py` | Rename files for stealth                   | File list     | New paths     |
 | APIProxyAgent        | `vectors/vector060_api_proxy.py` | Proxy and log API calls                    | Requests      | Responses     |
 | EntropyRotatorAgent  | `vectors/vector070_entropy_rotator.py` | Rotate overlay seeds                      | None          | Seed list     |
+| RepoFetcherAgent | `vector322_repo_fetcher.py` | Update `mlbb_repos.json` from GitHub | None | Repo index |
 | OverlaySpooferAgent  | `vectorvector080_overlay_spoofer.py` | Spoof overlay window names                | Name opt      | New name      |
 | SessionSpooferAgent  | `vectors/vector090_session_spoofer.py` | Generate fake session IDs                 | None          | Session ID    |
 | EntropyAgent         | `vectors/vector005_entropy.py` | Rotate random seeds for other modules       | None          | New entropy   |

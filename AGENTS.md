@@ -29,6 +29,7 @@ This project’s automation and vector logic are managed by modular agents.
 | TapbotGestureAgent    | vector319_tapbot_gesture.py | Simulate taps and swipes with entropy | Gesture plan | Touch events   | EntropyManager |
 | MapIntelligenceAgent  | vector320_map_intelligence.py | Build heatmap of enemy sightings | Frame stream | Heatmap data   | OverlayManager |
 | RepoReportAgent       | vector321_repo_report.py | Summarize repo categories from `mlbb_repos.json` | JSON index | Category counts | None |
+| RepoFetcherAgent      | vector322_repo_fetcher.py | Update `mlbb_repos.json` from GitHub | None | Repo index | None |
 
 ## Extension/Onboarding Instructions
 
